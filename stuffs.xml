@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stuffs>
+    <graphic_card>
+        <name>Geforce GTX 1080</name>
+        <company>nVidia</company>
+        <price>1000$</price>
+        <img>res/gc/gtx1080.png</img>
+        <type>gamer</type>
+    </graphic_card>
+    <motherboard>
+        <name>Z77</name>
+        <company>MSI</name>
+        <price>100$</price>
+        <img>res/mb/msiz77.png</img>
+        <type>gamer</type>
+    </motherboard>
+</stuffs>
