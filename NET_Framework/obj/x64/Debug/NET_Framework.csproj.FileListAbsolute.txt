@@ -401,3 +401,18 @@ C:\wamp\www\NET_Framework\NET_Framework\obj\x64\Debug\pro.xaml
 C:\wamp\www\NET_Framework\NET_Framework\obj\x64\Debug\desktop.xbf
 C:\wamp\www\NET_Framework\NET_Framework\obj\x64\Debug\gamer.xbf
 C:\wamp\www\NET_Framework\NET_Framework\obj\x64\Debug\pro.xbf
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\desktop.g.i.cs
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\desktop.g.cs
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\gamer.g.i.cs
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\gamer.g.cs
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\pro.g.i.cs
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\pro.g.cs
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\desktop.xaml
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\gamer.xaml
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\pro.xaml
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\desktop.xbf
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\gamer.xbf
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\obj\x64\Debug\pro.xbf
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\bin\x64\Debug\desktop.xbf
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\bin\x64\Debug\gamer.xbf
+C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\bin\x64\Debug\pro.xbf
