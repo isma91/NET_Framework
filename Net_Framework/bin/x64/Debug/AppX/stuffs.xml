@@ -1,65 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <stuffs>
-	<gamer>
-		<graphic_card>
-			<product>
-				<name>Geforce GTX 1080</name>
-				<company>nVidia</company>
-				<price>1000$</price>
-				<img>res/gc/gtx1080.png</img>
-			</product>
-			<product>
-				<name>Geforce GTX 980</name>
-				<company>nVidia</company>
-				<price>1000$</price>
-				<img>res/gc/gtx980.png</img>
-			</product>
-		</graphic_card>
-		<motherboards>
-			<product>
-				<name>Z77</name>
-				<company>MSI</company>
-				<price>100$</price>
-				<img>res/mb/msiz77.png</img>
-				<type>motherboard</type>
-				<config>gamer</config>
-			</product>
-		</motherboards>
-	</gamer>
-	<desktop>
-		<graphic_card>
-			<product>
-				<name>Geforce GTX 920</name>
-				<company>nVidia</company>
-				<price>100$</price>
-				<img>res/gc/gtx920</img>
-			</product>
-		</graphic_card>
-		<motherboards>
-			<product>
-				<name>Z77</name>
-				<company>MSI</company>
-				<price>100$</price>
-				<img>res/mb/msiz77.png</img>
-			</product>
-		</motherboards>
-	</desktop>
-	<pro>
-		<graphic_card>
-			<product>
-				<name>Geforce GTX 920</name>
-				<company>nVidia</company>
-				<price>100$</price>
-				<img>res/gc/gtx920</img>
-			</product>
-		</graphic_card>
-		<motherboards>
-			<product>
-				<name>Z77</name>
-				<company>MSI</company>
-				<price>100$</price>
-				<img>res/mb/msiz77.png</img>
-			</product>
-		</motherboards>
-	</pro>
+    <gamer>
+        <graphic_card>
+            <product>
+                <name>Geforce GTX 1080</name>
+                <company>nVidia</company>
+                <price>1000$</price>
+                <img>res/gc/gtx1080.png</img>
+            </product>
+            <product>
+                <name>Geforce GTX 980</name>
+                <company>nVidia</company>
+                <price>1000$</price>
+                <img>res/gc/gtx980.png</img>
+            </product>
+        </graphic_card>
+        <motherboards>
+            <product>
+                <name>Z77</name>
+                <company>MSI</company>
+                <price>100$</price>
+                <img>res/mb/msiz77.png</img>
+                <type>motherboard</type>
+            </product>
+        </motherboards>
+    </gamer>
+    <desktop>
+        <graphic_card>
+            <product>
+                <name>Geforce GTX 920</name>
+                <company>nVidia</company>
+                <price>100$</price>
+                <img>res/gc/gtx920</img>
+            </product>
+        </graphic_card>
+        <motherboards>
+            <product>
+                <name>Z77</name>
+                <company>MSI</company>
+                <price>100$</price>
+                <img>res/mb/msiz77.png</img>
+            </product>
+        </motherboards>
+    </desktop>
+    <pro>
+        <graphic_card>
+            <product>
+                <name>Geforce GTX 920</name>
+                <company>nVidia</company>
+                <price>100$</price>
+                <img>res/gc/gtx920</img>
+            </product>
+        </graphic_card>
+        <motherboards>
+            <product>
+                <name>Z77</name>
+                <company>MSI</company>
+                <price>100$</price>
+                <img>res/mb/msiz77.png</img>
+            </product>
+        </motherboards>
+    </pro>
 </stuffs>
