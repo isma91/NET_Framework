@@ -13,9 +13,8 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Config Desktop" VerticalAlignment="Top" Height="72" Width="356" SelectionChanged="textBlock_SelectionChanged" TextAlignment="Center" FontSize="48" Foreground="White"/>
-        <TextBlock x:Name="text_category" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphic Card" VerticalAlignment="Top" Height="72" Width="356" SelectionChanged="textBlock_SelectionChanged" TextAlignment="Center" FontSize="20" Foreground="White" Margin="4,100,0,0"/>
-
+        <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Config Desktop" VerticalAlignment="Top" Height="72" Width="356" TextAlignment="Center" FontSize="48" Foreground="White"/>
+        <ComboBox x:Name="componants" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,77,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="componant_change"/>
     </Grid>
 
 </Page>

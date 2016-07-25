@@ -27,9 +27,9 @@ namespace NET_Framework
             this.InitializeComponent();
         }
 
-        private void textBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        private void componant_change(object sender, SelectionChangedEventArgs e)
         {
-
+            System.Diagnostics.Debug.Write(sender);
         }
     }
 }
