@@ -27,9 +27,9 @@ namespace NET_Framework
             this.InitializeComponent();
         }
 
-        private void validate_budget_cliked(object sender, RoutedEventArgs e)
+        /*private void validate_budget_cliked(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(BlankPage1));
-        }
+            this.Frame.Navigate(typeof(BlankPage1));
+        }*/
     }
 }
