@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Diagnostics;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,8 +27,17 @@ namespace NET_Framework
         {
             this.InitializeComponent();
         }
+        private void button_Gamer(object sender, RoutedEventArgs e)
+        {
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        }
+
+        private void button_Pro(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button_Desktop(object sender, RoutedEventArgs e)
         {
 
         }
