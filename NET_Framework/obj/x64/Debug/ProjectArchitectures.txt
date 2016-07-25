@@ -1,1 +1,0 @@
-C:\Users\Isma\Documents\Visual Studio 2015\Projects\NET_Framework\NET_Framework\NET_Framework.csproj;x64

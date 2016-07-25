@@ -14,8 +14,8 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Config Desktop" VerticalAlignment="Top" Height="72" Width="356" SelectionChanged="textBlock_SelectionChanged" TextAlignment="Center" FontSize="48" Foreground="White"/>
-        <TextBlock x:Name="text_category" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphic Card" VerticalAlignment="Top" Height="72" Width="356" SelectionChanged="textBlock_SelectionChanged" TextAlignment="Center" FontSize="20" Foreground="White" Margin="-4,99,8,0"/>
-        
+        <TextBlock x:Name="text_category" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphic Card" VerticalAlignment="Top" Height="72" Width="356" SelectionChanged="textBlock_SelectionChanged" TextAlignment="Center" FontSize="20" Foreground="White" Margin="4,100,0,0"/>
+
     </Grid>
 
 </Page>

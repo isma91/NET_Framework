@@ -41,5 +41,20 @@ namespace NET_Framework
         {
             this.Frame.Navigate(typeof(desktop));
         }
+
+        private void button_DesktopImage(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(desktop));
+        }
+
+        private void button_ProImage(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(pro));
+        }
+
+        private void button_GamImage(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(gamer));
+        }
     }
 }
