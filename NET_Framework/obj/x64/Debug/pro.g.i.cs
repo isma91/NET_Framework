@@ -10,28 +10,30 @@
 
 namespace NET_Framework
 {
-    partial class pro : 
-        global::Windows.UI.Xaml.Controls.Page, 
-        global::Windows.UI.Xaml.Markup.IComponentConnector,
-        global::Windows.UI.Xaml.Markup.IComponentConnector2
+    partial class pro : global::Windows.UI.Xaml.Controls.Page
     {
+
+
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 14.0.0.0")]
+        private bool _contentLoaded;
+
         /// <summary>
-        /// Connect()
+        /// InitializeComponent()
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 14.0.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public void Connect(int connectionId, object target)
+        public void InitializeComponent()
         {
-            this._contentLoaded = true;
+            if (_contentLoaded)
+                return;
+
+            _contentLoaded = true;
+
+            global::System.Uri resourceLocator = new global::System.Uri("ms-appx:///pro.xaml");
+            global::Windows.UI.Xaml.Application.LoadComponent(this, resourceLocator, global::Windows.UI.Xaml.Controls.Primitives.ComponentResourceLocation.Application);
         }
 
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 14.0.0.0")]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::Windows.UI.Xaml.Markup.IComponentConnector GetBindingConnector(int connectionId, object target)
-        {
-            global::Windows.UI.Xaml.Markup.IComponentConnector returnValue = null;
-            return returnValue;
-        }
     }
 }
+
 

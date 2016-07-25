@@ -132,15 +132,21 @@ namespace NET_Framework.NET_Framework_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[3];
-            _typeNameTable[0] = "NET_Framework.MainPage";
+            _typeNameTable = new string[6];
+            _typeNameTable[0] = "NET_Framework.desktop";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[3] = "NET_Framework.gamer";
+            _typeNameTable[4] = "NET_Framework.MainPage";
+            _typeNameTable[5] = "NET_Framework.pro";
 
-            _typeTable = new global::System.Type[3];
-            _typeTable[0] = typeof(global::NET_Framework.MainPage);
+            _typeTable = new global::System.Type[6];
+            _typeTable[0] = typeof(global::NET_Framework.desktop);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[3] = typeof(global::NET_Framework.gamer);
+            _typeTable[4] = typeof(global::NET_Framework.MainPage);
+            _typeTable[5] = typeof(global::NET_Framework.pro);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -175,7 +181,10 @@ namespace NET_Framework.NET_Framework_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::NET_Framework.MainPage(); }
+        private object Activate_0_desktop() { return new global::NET_Framework.desktop(); }
+        private object Activate_3_gamer() { return new global::NET_Framework.gamer(); }
+        private object Activate_4_MainPage() { return new global::NET_Framework.MainPage(); }
+        private object Activate_5_pro() { return new global::NET_Framework.pro(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -187,9 +196,9 @@ namespace NET_Framework.NET_Framework_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  NET_Framework.MainPage
+            case 0:   //  NET_Framework.desktop
                 userType = new global::NET_Framework.NET_Framework_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_desktop;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -200,6 +209,27 @@ namespace NET_Framework.NET_Framework_XamlTypeInfo
 
             case 2:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::NET_Framework.NET_Framework_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 3:   //  NET_Framework.gamer
+                userType = new global::NET_Framework.NET_Framework_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_3_gamer;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 4:   //  NET_Framework.MainPage
+                userType = new global::NET_Framework.NET_Framework_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_4_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  NET_Framework.pro
+                userType = new global::NET_Framework.NET_Framework_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_5_pro;
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
             }
             return xamlType;
