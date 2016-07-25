@@ -29,22 +29,17 @@ namespace NET_Framework
         }
         private void button_Gamer(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(gamer));
         }
 
         private void button_Pro(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(pro));
         }
 
         private void button_Desktop(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(desktop));
         }
-
-        /*private void validate_budget_cliked(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(BlankPage1));
-        }*/
     }
 }
