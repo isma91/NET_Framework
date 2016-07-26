@@ -25,11 +25,16 @@ namespace NET_Framework
         public desktop()
         {
             this.InitializeComponent();
+            ComboBox components = new ComboBox();
+            componants.Items.Add("A");
+            componants.Items.Add("B");
+            componants.Items.Add("C");
         }
 
         private void componant_change(object sender, SelectionChangedEventArgs e)
         {
-            System.Diagnostics.Debug.Write(sender);
+            Object selected_item = componants.SelectedItem;
+            System.Diagnostics.Debug.WriteLine("Selected item = " + selected_item.ToString());
         }
     }
 }

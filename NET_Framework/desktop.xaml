@@ -14,7 +14,7 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Config Desktop" VerticalAlignment="Top" Height="72" Width="356" TextAlignment="Center" FontSize="48" Foreground="White"/>
-        <ComboBox x:Name="componants" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,77,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="componant_change"/>
+        <ComboBox x:Name="componants" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10,77,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="componant_change" />
     </Grid>
 
 </Page>
