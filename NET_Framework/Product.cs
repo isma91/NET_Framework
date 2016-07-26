@@ -7,6 +7,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Windows.UI.Popups;
+using System.Diagnostics;
 
 namespace NET_Framework
 {
@@ -50,6 +51,18 @@ namespace NET_Framework
             string[] types = new string[length];
             foreach (var product in this.json["products"])
             {
+            }
+        }
+
+        /*
+         * getContent renvoi un tableau
+         * envoyer les parametres config et type
+         */ 
+        public void getContent (string config, string type)
+        {
+            foreach (var test in this.json["products"])
+            {
+                Debug.WriteLine(test);
             }
         }
 
