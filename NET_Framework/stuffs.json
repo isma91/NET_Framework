@@ -6,7 +6,7 @@
       "company": "nVidia",
       "price": "1000$",
       "img": "res/gc/gtx1080.png",
-      "type": "graphic_card",
+      "type": "Graphic card",
       "config": "gamer"
     },
     {
@@ -15,7 +15,7 @@
       "company": "nVidia",
       "price": "1000$",
       "img": "res/gc/gtx980.png",
-      "type": "graphic_card",
+      "type": "Graphic card",
       "config": "gamer"
     },
     {
@@ -24,7 +24,7 @@
       "company": "MSI",
       "price": "100$",
       "img": "res/mb/msiz77.png",
-      "type": "motherboard",
+      "type": "Motherboard",
       "config": "gamer"
     },
     {
@@ -33,7 +33,7 @@
       "company": "nVidia",
       "price": "100$",
       "img": "res/gc/gtx920",
-      "type": "graphic_card",
+      "type": "Graphic card",
       "config": "desktop"
     },
     {
@@ -42,7 +42,7 @@
       "company": "MSI",
       "price": "100$",
       "img": "res/mb/msiz77.png",
-      "type": "motheboard",
+      "type": "Motherboard",
       "config": "gamer"
     },
     {
@@ -51,7 +51,7 @@
       "company": "nVidia",
       "price": "100$",
       "img": "res/gc/gtx920",
-      "type": "graphic_card",
+      "type": "Graphic card",
       "config": "pro"
     },
     {
@@ -60,7 +60,7 @@
       "company": "MSI",
       "price": "100$",
       "img": "res/mb/msiz77.png",
-      "type": "motherboard",
+      "type": "Motherboard",
       "config": "pro"
     }
   ]
