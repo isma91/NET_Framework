@@ -121,6 +121,7 @@
     <Content Include="Assets\arrow2.png" />
     <Content Include="Assets\desktop.png" />
     <Content Include="Assets\gamer.png" />
+    <Content Include="Assets\gforce.png" />
     <Content Include="Assets\greyarrow.png" />
     <Content Include="Assets\leftarrow.png" />
     <Content Include="Assets\param.png" />
