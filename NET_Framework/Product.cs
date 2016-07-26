@@ -44,7 +44,13 @@ namespace NET_Framework
             message_dialog.Commands.Add(new UICommand("Quit App", new UICommandInvokedHandler(this.Quit)));
             message_dialog.ShowAsync();
         }
-
+        /*
+         * get_all_type 
+         * 
+         * check in the json file all differents type of componants
+         * 
+         * return array of string
+         */
         public string[] get_all_type ()
         {
             int length = this.json["products"].Count();
