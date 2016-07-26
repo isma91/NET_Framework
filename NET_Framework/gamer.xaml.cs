@@ -31,5 +31,10 @@ namespace NET_Framework
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        private void componants_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
