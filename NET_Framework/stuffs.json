@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Geforce GTX 1080",
+      "company": "nVidia",
+      "price": "1000$",
+      "img": "res/gc/gtx1080.png",
+      "type": "graphic_card",
+      "config": "gamer"
+    },
+    {
+      "id": "2",
+      "name": "Geforce GTX 980",
+      "company": "nVidia",
+      "price": "1000$",
+      "img": "res/gc/gtx980.png",
+      "type": "graphic_card",
+      "config": "gamer"
+    },
+    {
+      "id": "3",
+      "name": "Z77",
+      "company": "MSI",
+      "price": "100$",
+      "img": "res/mb/msiz77.png",
+      "type": "motherboard",
+      "config": "gamer"
+    },
+    {
+      "id": "4",
+      "name": "Geforce GTX 920",
+      "company": "nVidia",
+      "price": "100$",
+      "img": "res/gc/gtx920",
+      "type": "graphic_card",
+      "config": "desktop"
+    },
+    {
+      "id": "5",
+      "name": "Z77",
+      "company": "MSI",
+      "price": "100$",
+      "img": "res/mb/msiz77.png",
+      "type": "motheboard",
+      "config": "gamer"
+    },
+    {
+      "id": "6",
+      "name": "Geforce GTX 920",
+      "company": "nVidia",
+      "price": "100$",
+      "img": "res/gc/gtx920",
+      "type": "graphic_card",
+      "config": "pro"
+    },
+    {
+      "id": "7",
+      "name": "Z77",
+      "company": "MSI",
+      "price": "100$",
+      "img": "res/mb/msiz77.png",
+      "type": "motherboard",
+      "config": "pro"
+    }
+  ]
+}
