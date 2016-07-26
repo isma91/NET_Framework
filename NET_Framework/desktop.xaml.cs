@@ -25,6 +25,7 @@ namespace NET_Framework
         public desktop()
         {
             this.InitializeComponent();
+            Product product = new Product();
             ComboBox components = new ComboBox();
             componants.Items.Add("A");
             componants.Items.Add("B");
