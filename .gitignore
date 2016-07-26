@@ -1,3 +1,5 @@
 .vs/
 NET_Framework/obj/
 NET_Framework/bin/
+NET_Framework/project.lock.json
+NET_Framework/NET_Framework.csproj.user
