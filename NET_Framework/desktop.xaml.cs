@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -36,6 +37,11 @@ namespace NET_Framework
         private void componant_change(object sender, SelectionChangedEventArgs e)
         {
             Object selected_item = componants.SelectedItem;
+            Product product = new Product();
+            List<Product> all_products = product.getContent("desktop", componants.SelectedItem.ToString());
+            if (all_products.Count != 0)
+            {
+            }
             System.Diagnostics.Debug.WriteLine("Selected item = " + selected_item.ToString());
         }
 
