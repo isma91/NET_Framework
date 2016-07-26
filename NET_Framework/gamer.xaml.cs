@@ -25,6 +25,12 @@ namespace NET_Framework
         public gamer()
         {
             this.InitializeComponent();
+            Product product = new Product();
+            var all_types = product.get_all_type();
+            for (int i = 0; i <= (all_types.Length - 1); i++)
+            {
+                componants.Items.Add(all_types[i]);
+            }
         }
 
         private void returnAtHome(object sender, RoutedEventArgs e)
