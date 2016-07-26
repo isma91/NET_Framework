@@ -26,6 +26,7 @@ namespace NET_Framework
         {
             this.InitializeComponent();
             Product product = new Product();
+            product.get_all_type();
             ComboBox components = new ComboBox();
             componants.Items.Add("A");
             componants.Items.Add("B");
