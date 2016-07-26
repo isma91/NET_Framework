@@ -20,6 +20,12 @@
                 <Image Source="Assets/arrow2.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button.Content>
         </Button>
+        <Canvas Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="185" VerticalAlignment="Top" Width="340" Margin="11,216,9,0" Background="#FFB6258D">
+            <RadioButton x:Name="radioButton" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="312" Height="74" Background="{x:Null}" Checked="radioButton_Checked" FontSize="36" Canvas.Left="7" Canvas.Top="9">
+                <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Geforce GTX 1080" SelectionChanged="textBlock1_SelectionChanged" FontSize="16"/>
+            </RadioButton>
+            <Image Source="Assets/gforce.png" Height="146" Canvas.Left="95" Width="229" Canvas.Top="39"/>
+        </Canvas>
     </Grid>
 
 </Page>

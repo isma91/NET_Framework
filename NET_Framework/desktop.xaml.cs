@@ -42,5 +42,15 @@ namespace NET_Framework
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        private void textBlock1_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
