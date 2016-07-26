@@ -44,13 +44,18 @@ namespace NET_Framework
             message_dialog.ShowAsync();
         }
 
-        public void get_all_type ()
+        public string[] get_all_type ()
         {
             int length = this.json["products"].Count();
             string[] types = new string[length];
+            int count = 0;
             foreach (var product in this.json["products"])
             {
+                types[count] = (string)product["type"];
+                count++;
             }
+            string[] all_types = types.Distinct().ToArray();
+            return all_types;
         }
 
         private void Quit (IUICommand command)
