@@ -26,11 +26,11 @@ namespace NET_Framework
         {
             this.InitializeComponent();
             Product product = new Product();
-            product.get_all_type();
-            ComboBox components = new ComboBox();
-            componants.Items.Add("A");
-            componants.Items.Add("B");
-            componants.Items.Add("C");
+            var all_types = product.get_all_type();
+            for (int i = 0; i <= (all_types.Length -1); i++)
+            {
+                componants.Items.Add(all_types[i]);
+            }
         }
 
         private void componant_change(object sender, SelectionChangedEventArgs e)
