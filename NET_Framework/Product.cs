@@ -60,15 +60,32 @@ namespace NET_Framework
         }
 
         /*
-         * getContent renvoi un tableau
-         * envoyer les parametres config et type
-         */ 
-        public void getContent (string config, string type)
+         * getContent return an array
+         * 
+         * @param string config, string type
+         */
+        public List<Product> getContent(string config, string type)
         {
+            int length = this.json["products"].Count();
+            string[] types = new string[length];
+            List<Product> product = new List<Product>();
             foreach (var test in this.json["products"])
             {
-                Debug.WriteLine(test);
+                if (config == (string)test["config"] && type == (string)test["type"])
+                {
+                    product.Add(new Product()
+                    {
+                        id = (string)test["id"],
+                        name = (string)test["name"],
+                        company = (string)test["company"],
+                        price = (string)test["price"],
+                        img = (string)test["img"],
+                        type = (string)test["type"],
+                        config = (string)test["config"]
+                    });
+                }
             }
+            return product;
         }
 
         private void Quit (IUICommand command)
