@@ -5,7 +5,7 @@
       "name": "Geforce GTX 1080",
       "company": "nVidia",
       "price": "1000$",
-      "img": "res/gc/gtx1080.png",
+      "img": "gc/gtx.png",
       "type": "Graphic card",
       "config": "gamer"
     },
@@ -14,54 +14,261 @@
       "name": "Geforce GTX 980",
       "company": "nVidia",
       "price": "1000$",
-      "img": "res/gc/gtx980.png",
+      "img": "gc/gtx.png",
       "type": "Graphic card",
       "config": "gamer"
     },
     {
       "id": "3",
-      "name": "Z77",
-      "company": "MSI",
-      "price": "100$",
-      "img": "res/mb/msiz77.png",
-      "type": "Motherboard",
+      "name": "i7 6700k",
+      "company": "intel",
+      "price": "600$",
+      "img": "proc/intel.png",
+      "type": "Processor",
       "config": "gamer"
     },
     {
       "id": "4",
-      "name": "Geforce GTX 920",
-      "company": "nVidia",
-      "price": "100$",
-      "img": "res/gc/gtx920",
-      "type": "Graphic card",
-      "config": "desktop"
+      "name": "i7 6750k",
+      "company": "intel",
+      "price": "800$",
+      "img": "proc/intel.png",
+      "type": "Processor",
+      "config": "gamer"
     },
     {
-      "id": "5",
+      "id": "4",
       "name": "Z77",
       "company": "MSI",
       "price": "100$",
-      "img": "res/mb/msiz77.png",
+      "img": "mb/msi.png",
       "type": "Motherboard",
       "config": "gamer"
     },
     {
       "id": "6",
-      "name": "Geforce GTX 920",
-      "company": "nVidia",
+      "name": "Z99",
+      "company": "ASUS",
       "price": "100$",
-      "img": "res/gc/gtx920",
+      "img": "mb/asus.png",
+      "type": "Motherboard",
+      "config": "gamer"
+    },
+    {
+      "id": "7",
+      "name": "SD 2TO",
+      "company": "seagate",
+      "price": "100$",
+      "img": "sd/sg.png",
+      "type": "disk",
+      "config": "gamer"
+    },
+    {
+      "id": "8",
+      "name": "SDD 500Go",
+      "company": "samsung",
+      "price": "150$",
+      "img": "sd/sm.png",
+      "type": "disk",
+      "config": "gamer"
+    },
+    {
+      "id": "9",
+      "name": "Geforce GT 705",
+      "company": "nVidia",
+      "price": "20$",
+      "img": "gc/gtx.png",
+      "type": "Graphic card",
+      "config": "desktop"
+    },
+    {
+      "id": "10",
+      "name": "Geforce GT 710",
+      "company": "nVidia",
+      "price": "30$",
+      "img": "gc/gtx.png",
+      "type": "Graphic card",
+      "config": "desktop"
+    },
+    {
+      "id": "11",
+      "name": "Intel Celeron N3050",
+      "company": "intel",
+      "price": "50$",
+      "img": "proc/intel.png",
+      "type": "Processor",
+      "config": "desktop"
+    },
+    {
+      "id": "12",
+      "name": "Intel Celeron N4000",
+      "company": "intel",
+      "price": "40$",
+      "img": "proc/intel.png",
+      "type": "Processor",
+      "config": "desktop"
+    },
+    {
+      "id": "13",
+      "name": "T12",
+      "company": "MSI",
+      "price": "20$",
+      "img": "mb/msi.png",
+      "type": "Motherboard",
+      "config": "desktop"
+    },
+    {
+      "id": "14",
+      "name": "x13",
+      "company": "ASUS",
+      "price": "20$",
+      "img": "mb/asus.png",
+      "type": "Motherboard",
+      "config": "desktop"
+    },
+    {
+      "id": "15",
+      "name": "SD 2TO",
+      "company": "seagate",
+      "price": "100$",
+      "img": "sd/sg.png",
+      "type": "disk",
+      "config": "desktop"
+    },
+    {
+      "id": "16",
+      "name": "SDD 500Go",
+      "company": "samsung",
+      "price": "150$",
+      "img": "sd/sm.png",
+      "type": "disk",
+      "config": "desktop"
+    },
+    {
+      "id": "17",
+      "name": "Geforce GTX 745",
+      "company": "nVidia",
+      "price": "200$",
+      "img": "gc/gtx.png",
       "type": "Graphic card",
       "config": "pro"
     },
     {
-      "id": "7",
+      "id": "18",
+      "name": "Geforce GTX 750",
+      "company": "nVidia",
+      "price": "200$",
+      "img": "gc/gtx.png",
+      "type": "Graphic card",
+      "config": "pro"
+    },
+    {
+      "id": "19",
+      "name": "i5 6400",
+      "company": "intel",
+      "price": "600$",
+      "img": "proc/intel.png",
+      "type": "Processor",
+      "config": "pro"
+    },
+    {
+      "id": "20",
+      "name": "i7 6750k",
+      "company": "intel",
+      "price": "800$",
+      "img": "proc/intel.png",
+      "type": "Processor",
+      "config": "pro"
+    },
+    {
+      "id": "21",
       "name": "Z77",
       "company": "MSI",
       "price": "100$",
-      "img": "res/mb/msiz77.png",
+      "img": "mb/msi.png",
       "type": "Motherboard",
       "config": "pro"
+    },
+    {
+      "id": "22",
+      "name": "Z99",
+      "company": "ASUS",
+      "price": "100$",
+      "img": "mb/asus.png",
+      "type": "Motherboard",
+      "config": "pro"
+    },
+    {
+      "id": "23",
+      "name": "1 To SATA (7200tours / minute)",
+      "company": "samsung",
+      "price": "500$",
+      "img": "sd/sm.png",
+      "type": "disk",
+      "config": "pro"
+    },
+    {
+      "id": "24",
+      "name": "SDD 500Go",
+      "company": "samsung",
+      "price": "150$",
+      "img": "sd/sm.png",
+      "type": "disk",
+      "config": "pro"
+    },
+    {
+      "id": "25",
+      "name": "16 Go",
+      "company": "gskill",
+      "price": "60$",
+      "img": "mem/gskill.png",
+      "type": "memory",
+      "config": "pro"
+    },
+    {
+      "id": "26",
+      "name": "32 Go",
+      "company": "gskill",
+      "price": "100$",
+      "img": "mem/gskill.png",
+      "type": "memory",
+      "config": "pro"
+    },
+    {
+      "id": "27",
+      "name": "8 Go",
+      "company": "gskill",
+      "price": "50$",
+      "img": "mem/gskill.png",
+      "type": "memory",
+      "config": "gamer"
+    },
+    {
+      "id": "28",
+      "name": "16 GO (2 x 8 Go)",
+      "company": "gskill",
+      "price": "80$",
+      "img": "mem/gskill.png",
+      "type": "memory",
+      "config": "gamer"
+    },
+    {
+      "id": "29",
+      "name": "2go",
+      "company": "gskill",
+      "price": "10$",
+      "img": "mem/gskill.png",
+      "type": "memory",
+      "config": "desktop"
+    },
+    {
+      "id": "30",
+      "name": "1go",
+      "company": "gskill",
+      "price": "5$",
+      "img": "mem/gskill.png",
+      "type": "memory",
+      "config": "desktop"
     }
   ]
 }
