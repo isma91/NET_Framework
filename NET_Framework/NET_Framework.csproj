@@ -90,6 +90,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <None Include="stuffs.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -107,6 +108,7 @@
     <Compile Include="pro.xaml.cs">
       <DependentUpon>pro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,8 +118,13 @@
     <None Include="NET_Framework_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\arrow2.png" />
     <Content Include="Assets\desktop.png" />
     <Content Include="Assets\gamer.png" />
+    <Content Include="Assets\greyarrow.png" />
+    <Content Include="Assets\leftarrow.png" />
+    <Content Include="Assets\param.png" />
+    <Content Include="Assets\setting.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -126,6 +133,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="stuffs.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
