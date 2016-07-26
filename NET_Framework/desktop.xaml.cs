@@ -36,5 +36,10 @@ namespace NET_Framework
             Object selected_item = componants.SelectedItem;
             System.Diagnostics.Debug.WriteLine("Selected item = " + selected_item.ToString());
         }
+
+        private void returnAtHome(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
     }
 }

@@ -7,7 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="#FF5D5D5D">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Config Gamer" VerticalAlignment="Top" Height="72" Width="356" TextAlignment="Center" FontSize="48" Foreground="White" Margin="1,32,3,0"/>
+        <ComboBox x:Name="componants" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="11,170,9,0" VerticalAlignment="Top" Width="340" PlaceholderText="Select a type of component" Background="#FF16769A" Height="48" />
+        <Button x:Name="button" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="19,110,295,0" Width="46" Background="{x:Null}" Foreground="White" Height="36" Click="returnAtHome" RenderTransformOrigin="1.076,-1.736">
+            <Button.Content>
+                <Image Source="Assets/arrow2.png"/>
+            </Button.Content>
+        </Button>
     </Grid>
 </Page>

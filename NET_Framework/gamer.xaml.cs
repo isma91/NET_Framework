@@ -26,5 +26,10 @@ namespace NET_Framework
         {
             this.InitializeComponent();
         }
+
+        private void returnAtHome(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
     }
 }
