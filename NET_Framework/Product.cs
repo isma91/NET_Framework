@@ -89,7 +89,7 @@ namespace NET_Framework
                         name = (string)compo["name"],
                         company = (string)compo["company"],
                         price = (string)compo["price"],
-                        img = (string)compo["img"],
+                        img = "Assets/" + (string)compo["img"],
                         type = (string)compo["type"],
                         config = (string)compo["config"]
                     });
