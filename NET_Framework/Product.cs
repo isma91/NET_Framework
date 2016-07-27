@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Windows.UI.Popups;
+using System.Collections.ObjectModel;
 
 namespace NET_Framework
 {
-    class Product
+    public class Product
     {
         public string id { get; set; }
         public string name { get; set; }
@@ -34,7 +35,7 @@ namespace NET_Framework
             }
         }
 
-        private void show_dialog (string title, string message)
+        private void show_dialog(string title, string message)
         {
             MessageDialog message_dialog = new MessageDialog(message, title);
             message_dialog.Commands.Clear();
@@ -49,7 +50,7 @@ namespace NET_Framework
          * 
          * return array of string
          */
-        public string[] get_all_type ()
+        public string[] get_all_type()
         {
             int length = this.json["products"].Count();
             string[] types = new string[length];
@@ -92,9 +93,37 @@ namespace NET_Framework
             return product;
         }
 
-        private void Quit (IUICommand command)
+        private void Quit(IUICommand command)
         {
             Windows.ApplicationModel.Core.CoreApplication.Exit();
+        }
+    }
+    public class ProductViewModel
+    {
+        private ObservableCollection<Product> productList = new ObservableCollection<Product>();
+        public ObservableCollection<Product> ProductList { get { return this.productList; } }
+        public ProductViewModel()
+        {
+            this.productList.Add(new NET_Framework.Product()
+            {
+                id = "0",
+                name = "Geforce GTX 1080",
+                company = "nVidia",
+                price = "1000$",
+                img = "Assest/gforce.png",
+                type = "type",
+                config = "config"
+            });
+            this.productList.Add(new NET_Framework.Product()
+            {
+                id = "1",
+                name = "Geforce GTX 980",
+                company = "nVidia",
+                price = "900$",
+                img = "Assest/gforce.png",
+                type = "type",
+                config = "config"
+            });
         }
     }
 }
