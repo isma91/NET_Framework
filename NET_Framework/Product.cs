@@ -193,8 +193,14 @@ namespace NET_Framework
     {
         private ObservableCollection<Product> productList = new ObservableCollection<Product>();
         public ObservableCollection<Product> ProductList { get { return this.productList; } }
-        public ProductViewModel()
+
+        public ObservableCollection<Product> addInList (List<Product> list)
         {
+            foreach (var product in list)
+            {
+                this.productList.Add(product);
+            }
+            return this.productList;
         }
     }
 }
