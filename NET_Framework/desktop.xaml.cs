@@ -23,6 +23,7 @@ namespace NET_Framework
     /// </summary>
     public sealed partial class desktop : Page
     {
+        public ProductViewModel ViewModel { get; set; }
         public desktop()
         {
             this.InitializeComponent();
@@ -42,7 +43,7 @@ namespace NET_Framework
             if (all_products.Count != 0)
             {
             }
-            System.Diagnostics.Debug.WriteLine("Selected item = " + selected_item.ToString());
+            this.ViewModel = new ProductViewModel();
         }
 
         private void returnAtHome(object sender, RoutedEventArgs e)
