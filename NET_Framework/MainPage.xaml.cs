@@ -56,5 +56,15 @@ namespace NET_Framework
         {
             this.Frame.Navigate(typeof(gamer));
         }
+
+        private void button_settingsImage(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(settings));
+        }
+
+        private void button_setting_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(settings));
+        }
     }
 }
