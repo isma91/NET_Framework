@@ -40,20 +40,13 @@ namespace NET_Framework
             Object selected_item = componants.SelectedItem;
             Product product = new Product();
             List<Product> all_products = product.getContent("desktop", componants.SelectedItem.ToString());
-            if (all_products.Count != 0)
-            {
-            }
-            this.ViewModel = new ProductViewModel();
+            ViewModel = new ProductViewModel();
+            ViewModel.addInList(all_products);
         }
 
         private void returnAtHome(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
-        }
-
-        private void textBlock1_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void radioButton_Checked(object sender, RoutedEventArgs e)
