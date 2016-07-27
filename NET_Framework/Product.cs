@@ -7,6 +7,8 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using Windows.UI.Popups;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using Windows.Storage;
 
 namespace NET_Framework
 {
@@ -31,7 +33,7 @@ namespace NET_Framework
             }
             catch (FileNotFoundException)
             {
-                System.Diagnostics.Debug.WriteLine("The file " + this.file_name + " was not found !!");
+                Debug.WriteLine("The file " + this.file_name + " was not found !!");
             }
         }
 
@@ -41,7 +43,7 @@ namespace NET_Framework
             message_dialog.Commands.Clear();
             message_dialog.Commands.Add(new UICommand("Ok"));
             message_dialog.Commands.Add(new UICommand("Quit App", new UICommandInvokedHandler(this.Quit)));
-            message_dialog.ShowAsync();
+            //message_dialog.ShowAsync();
         }
         /*
          * get_all_type 
@@ -65,31 +67,120 @@ namespace NET_Framework
         }
 
         /*
-         * getContent return an array
+         * getContent
          * 
          * @param string config, string type
+         * @return List<Product>
          */
-        public List<Product> getContent(string config, string type)
+        public List<Product> getContent (string config, string type)
         {
             int length = this.json["products"].Count();
             string[] types = new string[length];
+
             List<Product> product = new List<Product>();
-            foreach (var test in this.json["products"])
+
+            foreach (var compo in this.json["products"])
             {
-                if (config == (string)test["config"] && type == (string)test["type"])
+                if (config == (string)compo["config"] && type == (string)compo["type"])
                 {
                     product.Add(new Product()
                     {
-                        id = (string)test["id"],
-                        name = (string)test["name"],
-                        company = (string)test["company"],
-                        price = (string)test["price"],
-                        img = (string)test["img"],
-                        type = (string)test["type"],
-                        config = (string)test["config"]
+                        id = (string)compo["id"],
+                        name = (string)compo["name"],
+                        company = (string)compo["company"],
+                        price = (string)compo["price"],
+                        img = (string)compo["img"],
+                        type = (string)compo["type"],
+                        config = (string)compo["config"]
                     });
                 }
             }
+
+            return product;
+        }
+
+        /*
+         * save method
+         * 
+         * async method for saving id of item in a file json
+         * 
+         * @param int id
+         * @return Task
+         */
+        public async Task save (int id, string type)
+        {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            var folder = ApplicationData.Current.LocalFolder;
+            var newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+
+            var textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+            await FileIO.WriteTextAsync(textFile, "{'1', '2', '3', '4'}");
+            //await FileIO.WriteTextAsync(textFile, type);
+
+            var getfolder = ApplicationData.Current.LocalFolder;
+            var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            var getfiles = await getnewFolder.GetFilesAsync();
+
+            var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+            var textContent = await FileIO.ReadTextAsync(desiredFile);
+
+            var allJson = JObject.Parse(textContent);
+
+            Debug.WriteLine(allJson);
+
+        }
+
+        /*
+         * getMyStuffs method
+         * 
+         * get saving stuffs file if exists
+         * and return all id in json
+         * 
+         * @return json
+         */
+        public async Task getMyStuffs ()
+        {
+            var folder = ApplicationData.Current.LocalFolder;
+            var newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            var files = await newFolder.GetFilesAsync();
+
+            var desiredFile = files.FirstOrDefault(x => x.Name == "config.xml");
+            var textContent = await FileIO.ReadTextAsync(desiredFile);
+            Debug.WriteLine(textContent);
+
+            //return List<Product>;
+        }
+
+        /*
+         * getContentById method
+         * 
+         * @param int id
+         * @return List<Product>
+         */
+        public List<Product> getContentById (int id)
+        {
+            int length = this.json["products"].Count();
+            string[] types = new string[length];
+
+            List<Product> product = new List<Product>();
+
+            foreach (var compo in this.json["products"])
+            {
+                if (id == (int)compo["id"])
+                {
+                    product.Add(new Product()
+                    {
+                        id = (string)compo["id"],
+                        name = (string)compo["name"],
+                        company = (string)compo["company"],
+                        price = (string)compo["price"],
+                        img = (string)compo["img"],
+                        type = (string)compo["type"],
+                        config = (string)compo["config"]
+                    });
+                }
+            }
+
             return product;
         }
 
@@ -104,26 +195,6 @@ namespace NET_Framework
         public ObservableCollection<Product> ProductList { get { return this.productList; } }
         public ProductViewModel()
         {
-            this.productList.Add(new NET_Framework.Product()
-            {
-                id = "0",
-                name = "Geforce GTX 1080",
-                company = "nVidia",
-                price = "1000$",
-                img = "Assest/gforce.png",
-                type = "type",
-                config = "config"
-            });
-            this.productList.Add(new NET_Framework.Product()
-            {
-                id = "1",
-                name = "Geforce GTX 980",
-                company = "nVidia",
-                price = "900$",
-                img = "Assest/gforce.png",
-                type = "type",
-                config = "config"
-            });
         }
     }
 }

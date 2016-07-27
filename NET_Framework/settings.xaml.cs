@@ -25,6 +25,15 @@ namespace NET_Framework
         public settings()
         {
             this.InitializeComponent();
+            this.stuffs();
+        }
+
+        public async void stuffs()
+        {
+            Product stuffs = new Product();
+            await stuffs.save(4, "test");
+            await stuffs.save(6, "toto");
+            await stuffs.getMyStuffs();
         }
 
         private void text_welcome_SelectionChanged(object sender, RoutedEventArgs e)
