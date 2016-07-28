@@ -210,6 +210,10 @@ namespace NET_Framework
          */
         public async Task save (int id, string type)
         {
+            var nameF = ApplicationData.Current.LocalFolder;
+            var createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            var createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+
             // create folder and open if exist
             var getfolder = ApplicationData.Current.LocalFolder;
             var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);

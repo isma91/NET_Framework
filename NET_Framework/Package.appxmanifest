@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="NET_Framework.App">
-      <uap:VisualElements DisplayName="NET_Framework" Square150x150Logo="Assets\param.png" Square44x44Logo="Assets\param.png" Description="NET_Framework" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="NET_Framework" Square150x150Logo="Assets\param.png" Square44x44Logo="Assets\param.png" Description="NET_Framework" BackgroundColor="white">
         <uap:DefaultTile Wide310x150Logo="Assets\param.png" Square310x310Logo="Assets\param.png" Square71x71Logo="Assets\param.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -23,7 +23,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\setting.png" BackgroundColor="white" />
+        <uap:SplashScreen Image="Assets\log.png" BackgroundColor="white" />
       </uap:VisualElements>
     </Application>
   </Applications>

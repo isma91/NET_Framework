@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace NET_Framework
 {
-    public class ProductViewModel : INotifyPropertyChanged
+    public class ProductViewModel : Windows.UI.Xaml.Controls.Page, INotifyPropertyChanged
     {
         private ObservableCollection<Product> productList = new ObservableCollection<Product>();
         public ObservableCollection<Product> ProductList
         {
             get
             {
-                return this.productList;
+                return productList;
             }
 
             set
             {
-                this.NotifyPropertyChanged("ProductList");
+                NotifyPropertyChanged();
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,7 +35,7 @@ namespace NET_Framework
             }
         }
 
-        private void NotifyPropertyChanged ([CallerMemberName] string propertyName = null)
+        private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
             {

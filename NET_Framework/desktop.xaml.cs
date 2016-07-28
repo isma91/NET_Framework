@@ -24,25 +24,25 @@ namespace NET_Framework
     public sealed partial class desktop : Page
     {
         public ProductViewModel ViewModel { get; set; }
+        public Product product = new Product();
         public desktop()
         {
             this.InitializeComponent();
             Product product = new Product();
-            var all_types = product.get_all_type();
+            var all_types = this.product.get_all_type();
             for (int i = 0; i <= (all_types.Length -1); i++)
             {
                 componants.Items.Add(all_types[i]);
             }
+            this.ViewModel = new ProductViewModel();
         }
 
         private void componant_change(object sender, SelectionChangedEventArgs e)
         {
             string selected_item = componants.SelectedItem.ToString();
             string type = this.GetType().Name;
-            Product product = new Product();
-            List<Product> all_products = product.getContent(type, selected_item);
-            ViewModel = new ProductViewModel();
-            ViewModel.addInList(all_products);
+            List<Product> all_products = this.product.getContent(type, selected_item);
+            this.ViewModel.addInList(all_products);
         }
 
         private void returnAtHome(object sender, RoutedEventArgs e)
@@ -50,14 +50,12 @@ namespace NET_Framework
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        private async void Canvas_clicked(object sender, PointerRoutedEventArgs e)
         {
-
-        }
-
-        private void Canvas_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("entered");
+            Canvas canvas = (Canvas)sender;
+            string tag_canvas = (string)canvas.Tag;
+            int id = Int32.Parse(tag_canvas);
+            await this.product.save(id, componants.SelectedItem.ToString());
         }
     }
 }
