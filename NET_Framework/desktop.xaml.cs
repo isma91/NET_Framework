@@ -37,7 +37,7 @@ namespace NET_Framework
 
         private void componant_change(object sender, SelectionChangedEventArgs e)
         {
-            Object selected_item = componants.SelectedItem.ToString();
+            string selected_item = componants.SelectedItem.ToString();
             Product product = new Product();
             List<Product> all_products = product.getContent("desktop", selected_item);
             ViewModel = new ProductViewModel();
