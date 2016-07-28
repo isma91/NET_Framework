@@ -253,21 +253,23 @@ namespace NET_Framework
             var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
             string textContent = await FileIO.ReadTextAsync(desiredFile);
 
-            List<settings> product = new List<settings>();
+            List<MyStuff> product = new List<MyStuff>();
 
             XmlReader xReader = XmlReader.Create(new StringReader(textContent));
             while (xReader.Read())
             {
                 string type = xReader.Name; // graphic card
                 string type2 = type.Replace("_", " ");
+
                 string id = xReader.ReadOuterXml(); // id
                 string id1 = id.Replace("<" + type + ">", "");
                 string id2 = id1.Replace("</" + type + ">", "");
+
                 Debug.WriteLine(type2);
                 Debug.WriteLine(id2);
 
-                var stuff = getContentById(id);
-                product.Add(new settings()
+                var stuff = getContentById(id2);
+                product.Add(new MyStuff()
                     {
                         id = (string)stuff[0].id,
                         name = (string)stuff[0].name,
@@ -278,9 +280,6 @@ namespace NET_Framework
                         config = (string)stuff[0].config
                     });
             }
-
-
-            Debug.WriteLine(product);
         }
 
         /*
@@ -295,10 +294,10 @@ namespace NET_Framework
             string[] types = new string[length];
 
             List<Product> product = new List<Product>();
-
+            bool enter = false;
             foreach (var compo in this.json["products"])
             {
-                if (id == (string)compo["id"])
+                if (id == (string)compo["id"] && enter == false)
                 {
                     product.Add(new Product()
                     {
@@ -310,10 +309,22 @@ namespace NET_Framework
                         type = (string)compo["type"],
                         config = (string)compo["config"]
                     });
+                    return product;
                 }
             }
 
             return product;
+        }
+
+        public class MyStuff
+        {
+            public string id { get; set; }
+            public string name { get; set; }
+            public string company { get; set; }
+            public string price { get; set; }
+            public string img { get; set; }
+            public string type { get; set; }
+            public string config { get; set; }
         }
 
         private void Quit(IUICommand command)
