@@ -196,6 +196,7 @@ namespace NET_Framework
 
         public ObservableCollection<Product> addInList (List<Product> list)
         {
+            this.productList.Clear();
             foreach (var product in list)
             {
                 this.productList.Add(product);
