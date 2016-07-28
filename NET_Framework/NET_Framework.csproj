@@ -109,6 +109,7 @@
       <DependentUpon>pro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Product.cs" />
+    <Compile Include="ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="settings.xaml.cs">
       <DependentUpon>settings.xaml</DependentUpon>
@@ -123,11 +124,27 @@
   <ItemGroup>
     <Content Include="Assets\arrow2.png" />
     <Content Include="Assets\desktop.png" />
+    <Content Include="Assets\Disk\samsung500-go.png" />
+    <Content Include="Assets\Disk\seagate-logo.png" />
     <Content Include="Assets\gamer.png" />
-    <Content Include="Assets\gforce.png" />
+    <Content Include="Assets\GraphicCard\geforce705.png" />
+    <Content Include="Assets\GraphicCard\GeforceGTX745.png" />
+    <Content Include="Assets\GraphicCard\gforce1080.png" />
+    <Content Include="Assets\GraphicCard\gforce980.png" />
+    <Content Include="Assets\GraphicCard\gforceGT710.png" />
     <Content Include="Assets\greyarrow.png" />
     <Content Include="Assets\leftarrow.png" />
+    <Content Include="Assets\Memory\gskill.png" />
+    <Content Include="Assets\Memory\LEXARSD.png" />
+    <Content Include="Assets\Motherboard\asus.png" />
+    <Content Include="Assets\Motherboard\msi.png" />
+    <Content Include="Assets\Motherboard\Z77.png" />
     <Content Include="Assets\param.png" />
+    <Content Include="Assets\Processor\corei7.png" />
+    <Content Include="Assets\Processor\i5.png" />
+    <Content Include="Assets\Processor\i76750k.png" />
+    <Content Include="Assets\Processor\intel-celeron-n3050.png" />
+    <Content Include="Assets\Processor\intelceleron.png" />
     <Content Include="Assets\setting.png" />
     <Content Include="Assets\star.png" />
     <Content Include="Properties\Default.rd.xml" />

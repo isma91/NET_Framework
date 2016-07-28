@@ -223,21 +223,6 @@ namespace NET_Framework
             Windows.ApplicationModel.Core.CoreApplication.Exit();
         }
     }
-    public class ProductViewModel
-    {
-        private ObservableCollection<Product> productList = new ObservableCollection<Product>();
-        public ObservableCollection<Product> ProductList { get { return this.productList; } }
-
-        public ObservableCollection<Product> addInList (List<Product> list)
-        {
-            this.productList.Clear();
-            foreach (var product in list)
-            {
-                this.productList.Add(product);
-            }
-            return this.productList;
-        }
-    }
 
     public class MyStuff
     {

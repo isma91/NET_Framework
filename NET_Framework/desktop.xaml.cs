@@ -38,8 +38,9 @@ namespace NET_Framework
         private void componant_change(object sender, SelectionChangedEventArgs e)
         {
             string selected_item = componants.SelectedItem.ToString();
+            string type = this.GetType().Name;
             Product product = new Product();
-            List<Product> all_products = product.getContent("desktop", selected_item);
+            List<Product> all_products = product.getContent(type, selected_item);
             ViewModel = new ProductViewModel();
             ViewModel.addInList(all_products);
         }
