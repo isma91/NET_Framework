@@ -134,6 +134,7 @@
     <Content Include="Assets\GraphicCard\gforceGT710.png" />
     <Content Include="Assets\greyarrow.png" />
     <Content Include="Assets\leftarrow.png" />
+    <Content Include="Assets\log.png" />
     <Content Include="Assets\Memory\gskill.png" />
     <Content Include="Assets\Memory\LEXARSD.png" />
     <Content Include="Assets\Motherboard\asus.png" />
