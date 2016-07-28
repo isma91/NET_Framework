@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Windows.Storage;
 using System.ComponentModel;
+using System.Xml;
 
 namespace NET_Framework
 {
@@ -132,14 +133,6 @@ namespace NET_Framework
             }
         }
 
-        private void show_dialog(string title, string message)
-        {
-            MessageDialog message_dialog = new MessageDialog(message, title);
-            message_dialog.Commands.Clear();
-            message_dialog.Commands.Add(new UICommand("Ok"));
-            message_dialog.Commands.Add(new UICommand("Quit App", new UICommandInvokedHandler(this.Quit)));
-            //message_dialog.ShowAsync();
-        }
         /*
          * get_all_type 
          * 
@@ -194,6 +187,19 @@ namespace NET_Framework
             return product;
         }
 
+        public int countOccurence(string source, string test)
+        {
+            int nb = 0;
+            int i = 0;
+            while ((i = source.IndexOf(test, i)) != -1)
+            {
+                i += test.Length;
+                nb++;
+            }
+            return nb;
+        }
+        
+
         /*
          * save method
          * 
@@ -204,24 +210,29 @@ namespace NET_Framework
          */
         public async Task save (int id, string type)
         {
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            var folder = ApplicationData.Current.LocalFolder;
-            var newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-
-            var textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
-            await FileIO.WriteTextAsync(textFile, "{'1', '2', '3', '4'}");
-            //await FileIO.WriteTextAsync(textFile, type);
-
+            // create folder and open if exist
             var getfolder = ApplicationData.Current.LocalFolder;
             var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
             var getfiles = await getnewFolder.GetFilesAsync();
 
+            // get file config.xml
             var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+
+            // read file
             var textContent = await FileIO.ReadTextAsync(desiredFile);
 
-            var allJson = JObject.Parse(textContent);
 
-            Debug.WriteLine(allJson);
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            var folder = ApplicationData.Current.LocalFolder;
+            var newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+
+            string occurence = "<" + type + ">";
+
+            if (this.countOccurence(textContent, occurence) <= 0)
+            {
+                var textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+                await FileIO.WriteTextAsync(textFile, textContent + "\n<" + type + ">" + id.ToString() + "</" + type + ">");
+            }
 
         }
 
@@ -235,15 +246,38 @@ namespace NET_Framework
          */
         public async Task getMyStuffs ()
         {
-            var folder = ApplicationData.Current.LocalFolder;
-            var newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            var files = await newFolder.GetFilesAsync();
+            var getfolder = ApplicationData.Current.LocalFolder;
+            var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            var getfiles = await getnewFolder.GetFilesAsync();
 
-            var desiredFile = files.FirstOrDefault(x => x.Name == "config.xml");
-            var textContent = await FileIO.ReadTextAsync(desiredFile);
-            Debug.WriteLine(textContent);
+            var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+            string textContent = await FileIO.ReadTextAsync(desiredFile);
 
-            //return List<Product>;
+            List<MyStuff> product = new List<MyStuff>();
+
+            XmlReader xReader = XmlReader.Create(new StringReader(textContent));
+            while (xReader.Read())
+            {
+                Debug.WriteLine(xReader.Name);
+                Debug.WriteLine(xReader.Value);
+                string type = xReader.Name; // graphic card
+                string id = xReader.Value; // id
+
+                var stuff = getContentById(id);
+                product.Add(new MyStuff()
+                    {
+                        id = (string)stuff[0].id,
+                        name = (string)stuff[0].name,
+                        company = (string)stuff[0].company,
+                        price = (string)stuff[0].price,
+                        img = "Assets/" + (string)stuff[0].img,
+                        type = (string)stuff[0].type,
+                        config = (string)stuff[0].config
+                    });
+            }
+
+
+            Debug.WriteLine(product);
         }
 
         /*
@@ -252,7 +286,7 @@ namespace NET_Framework
          * @param int id
          * @return List<Product>
          */
-        public List<Product> getContentById (int id)
+        public List<Product> getContentById (string id)
         {
             int length = this.json["products"].Count();
             string[] types = new string[length];
@@ -261,7 +295,7 @@ namespace NET_Framework
 
             foreach (var compo in this.json["products"])
             {
-                if (id == (int)compo["id"])
+                if (id == (string)compo["id"])
                 {
                     product.Add(new Product()
                     {
@@ -283,5 +317,16 @@ namespace NET_Framework
         {
             Windows.ApplicationModel.Core.CoreApplication.Exit();
         }
+    }
+
+    public class MyStuff
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public string company { get; set; }
+        public string price { get; set; }
+        public string img { get; set; }
+        public string type { get; set; }
+        public string config { get; set; }
     }
 }
