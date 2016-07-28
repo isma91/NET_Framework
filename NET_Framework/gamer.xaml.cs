@@ -49,11 +49,11 @@ namespace NET_Framework
             this.ViewModel.addInList(all_products);
         }
 
-        private void Canvas_clicked(object sender, PointerRoutedEventArgs e)
+        private async void Canvas_clicked(object sender, PointerRoutedEventArgs e)
         {
             Canvas canvas = (Canvas)sender;
             int id = (int)canvas.Tag;
-            this.product.save(id, componants.SelectedItem.ToString());
+            await this.product.save(id, componants.SelectedItem.ToString());
         }
     }
 }
