@@ -9,20 +9,115 @@ using Windows.UI.Popups;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Windows.Storage;
+using System.ComponentModel;
 
 namespace NET_Framework
 {
-    public class Product
+    public class Product : INotifyPropertyChanged
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string company { get; set; }
-        public string price { get; set; }
-        public string img { get; set; }
-        public string type { get; set; }
-        public string config { get; set; }
+        private string id;
+        public string Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+                NotifyPropertyChanged("Id");
+            }
+        }
+        private string name;
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+                NotifyPropertyChanged("Name");
+            }
+        }
+        private string company;
+        public string Company
+        {
+            get
+            {
+                return this.company;
+            }
+            set
+            {
+                this.company = value;
+                NotifyPropertyChanged("Company");
+            }
+        }
+        private string price;
+        public string Price
+        {
+            get
+            {
+                return this.price;
+            }
+            set
+            {
+                this.price = value;
+                NotifyPropertyChanged("Price");
+            }
+        }
+        private string img;
+        public string Img
+        {
+            get
+            {
+                return this.img;
+            }
+            set
+            {
+                this.img = value;
+                NotifyPropertyChanged("Img");
+            }
+        }
+        private string type;
+        public string Type
+        {
+            get
+            {
+                return this.type;
+            }
+            set
+            {
+                this.type = value;
+                NotifyPropertyChanged("Type");
+            }
+        }
+        private string config;
+        public string Config
+        {
+            get
+            {
+                return this.config;
+            }
+            set
+            {
+                this.config = value;
+                NotifyPropertyChanged("Config");
+            }
+        }
         private string file_name = "stuffs.json";
         private JObject json { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         public Product()
         {
@@ -85,13 +180,13 @@ namespace NET_Framework
                 {
                     product.Add(new Product()
                     {
-                        id = (string)compo["id"],
-                        name = (string)compo["name"],
-                        company = (string)compo["company"],
-                        price = (string)compo["price"],
-                        img = "Assets/" + (string)compo["img"],
-                        type = (string)compo["type"],
-                        config = (string)compo["config"]
+                        Id = (string)compo["id"],
+                        Name = (string)compo["name"],
+                        Company = (string)compo["company"],
+                        Price = (string)compo["price"],
+                        Img = "Assets/" + (string)compo["img"],
+                        Type = (string)compo["type"],
+                        Config = (string)compo["config"]
                     });
                 }
             }
