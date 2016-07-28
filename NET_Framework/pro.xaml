@@ -9,12 +9,29 @@
 
     <Grid Background="#FF5D5D5D">
         <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Config Pro" VerticalAlignment="Top" Height="72" Width="356" TextAlignment="Center" FontSize="48" Foreground="White" Margin="1,32,3,0"/>
-        <ComboBox x:Name="componants" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="11,170,9,0" VerticalAlignment="Top" Width="340"  PlaceholderText="Select a type of component" Background="#FF16769A" Height="48" />
+        <ComboBox x:Name="componants" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="11,170,9,0" SelectionChanged="componant_change" VerticalAlignment="Top" Width="340"  PlaceholderText="Select a type of component" Background="#FF16769A" Height="48" />
         <Button x:Name="button" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="19,110,295,0" Width="46" Background="{x:Null}" Foreground="White" Height="36" Click="returnAtHome" RenderTransformOrigin="1.076,-1.736">
             <Button.Content>
                 <Image Source="Assets/arrow2.png"/>
             </Button.Content>
         </Button>
+        <ListView Grid.Row="2" ItemsSource="{x:Bind ViewModel.ProductList}" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Product">
+                    <StackPanel Orientation="Horizontal" Margin="6">
+                        <StackPanel>
+                            <Canvas Height="185"  Width="340" Background="#FF16769A" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Top" PointerEntered="Canvas_PointerEntered">
+                                <RadioButton Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="312" Height="74" Background="{x:Null}" Checked="radioButton_Checked" FontSize="36" Canvas.Left="7" Canvas.Top="9">
+                                    <TextBlock TextWrapping="Wrap" Text="{x:Bind Name, Mode=OneWay}" FontSize="16"/>
+                                </RadioButton>
+                                <TextBlock Text="{x:Bind Price, Mode=OneWay}" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="67" Width="110" TextAlignment="Center" FontSize="36" Foreground="#FF220000" Canvas.Left="2" Canvas.Top="118"/>
+                                <Image Source="{x:Bind Img, Mode=OneWay}" Height="154" Canvas.Left="93" Canvas.Top="32" Width="246"/>
+                            </Canvas>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 
 </Page>

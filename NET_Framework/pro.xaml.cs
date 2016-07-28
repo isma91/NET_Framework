@@ -22,6 +22,7 @@ namespace NET_Framework
     /// </summary>
     public sealed partial class pro : Page
     {
+        public ProductViewModel ViewModel { get; set; }
         public pro()
         {
             this.InitializeComponent();
@@ -31,11 +32,31 @@ namespace NET_Framework
             {
                 componants.Items.Add(all_types[i]);
             }
+            this.ViewModel = new ProductViewModel();
         }
 
         private void returnAtHome(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void componant_change(object sender, SelectionChangedEventArgs e)
+        {
+            string selected_item = componants.SelectedItem.ToString();
+            string type = this.GetType().Name;
+            Product product = new Product();
+            List<Product> all_products = product.getContent(type, selected_item);
+            this.ViewModel.addInList(all_products);
+        }
+
+        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Canvas_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("entered");
         }
     }
 }

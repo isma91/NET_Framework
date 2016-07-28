@@ -33,6 +33,7 @@ namespace NET_Framework
             {
                 componants.Items.Add(all_types[i]);
             }
+            this.ViewModel = new ProductViewModel();
         }
 
         private void componant_change(object sender, SelectionChangedEventArgs e)
@@ -41,8 +42,7 @@ namespace NET_Framework
             string type = this.GetType().Name;
             Product product = new Product();
             List<Product> all_products = product.getContent(type, selected_item);
-            ViewModel = new ProductViewModel();
-            ViewModel.addInList(all_products);
+            this.ViewModel.addInList(all_products);
         }
 
         private void returnAtHome(object sender, RoutedEventArgs e)
