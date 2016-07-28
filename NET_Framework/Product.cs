@@ -231,7 +231,7 @@ namespace NET_Framework
             if (this.countOccurence(textContent, occurence) <= 0)
             {
                 var textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
-                await FileIO.WriteTextAsync(textFile, textContent + "\n<" + type + ">" + id.ToString() + "</" + type + ">");
+                await FileIO.WriteTextAsync(textFile, textContent + "\n<" + type.Replace(" ", "_") + ">" + id.ToString() + "</" + type.Replace(" ", "_") + ">");
             }
 
         }
@@ -253,18 +253,21 @@ namespace NET_Framework
             var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
             string textContent = await FileIO.ReadTextAsync(desiredFile);
 
-            List<MyStuff> product = new List<MyStuff>();
+            List<settings> product = new List<settings>();
 
             XmlReader xReader = XmlReader.Create(new StringReader(textContent));
             while (xReader.Read())
             {
-                Debug.WriteLine(xReader.Name);
-                Debug.WriteLine(xReader.Value);
                 string type = xReader.Name; // graphic card
-                string id = xReader.Value; // id
+                string type2 = type.Replace("_", " ");
+                string id = xReader.ReadOuterXml(); // id
+                string id1 = id.Replace("<" + type + ">", "");
+                string id2 = id1.Replace("</" + type + ">", "");
+                Debug.WriteLine(type2);
+                Debug.WriteLine(id2);
 
                 var stuff = getContentById(id);
-                product.Add(new MyStuff()
+                product.Add(new settings()
                     {
                         id = (string)stuff[0].id,
                         name = (string)stuff[0].name,
@@ -317,16 +320,5 @@ namespace NET_Framework
         {
             Windows.ApplicationModel.Core.CoreApplication.Exit();
         }
-    }
-
-    public class MyStuff
-    {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string company { get; set; }
-        public string price { get; set; }
-        public string img { get; set; }
-        public string type { get; set; }
-        public string config { get; set; }
     }
 }
