@@ -42,7 +42,7 @@ namespace NET_Framework
             Product product = new Product();
             List<Product> all_products = product.getContent(type, selected_item);
             ViewModel = new ProductViewModel();
-            ViewModel.addInList(all_products)
+            ViewModel.addInList(all_products);
         }
 
         private void returnAtHome(object sender, RoutedEventArgs e)
