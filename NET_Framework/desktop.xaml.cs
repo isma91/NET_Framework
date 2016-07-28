@@ -53,5 +53,10 @@ namespace NET_Framework
         {
 
         }
+
+        private void Canvas_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("entered");
+        }
     }
 }
