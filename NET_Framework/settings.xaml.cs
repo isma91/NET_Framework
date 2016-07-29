@@ -15,23 +15,16 @@ namespace NET_Framework
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
     public sealed partial class settings : Page
-    {   
-        public List<Product> product = new List<Product>();
-        public string Graphic_card;
-        public string Motherboard;
-        public string Processor;
-        public string Disk;
-        public string Memory;
+    {
+        public ProductViewModel ViewModel { get; set; }
+        public Product product = new Product();
+        public List<Product> ListProduct = new List<Product>();
 
         public settings()
         {
             this.InitializeComponent();
+            this.ViewModel = new ProductViewModel();
             this.getMyStuffs();
-            /*this.Graphic_card = "Nvidia";
-            this.Motherboard = "ATI";
-            this.Processor = "Intel";
-            this.Disk = "Kingstone";
-            this.Memory = "Corsair";*/
         }
 
         /// <summary>
@@ -47,6 +40,56 @@ namespace NET_Framework
         private void returnAtHome(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
+        }
+
+        /// <summary>
+        /// convertBigListProductToOneListProduct
+        /// 
+        /// Convert the List<Product> in a List<Product> of one element
+        /// 
+        /// @param List<Product> list  the big list of many Product elements
+        /// 
+        /// @return List<Product>;
+        /// </summary>
+        public List<Product> convertBigListProductToOneListProduct(List<Product> list)
+        {
+            List<Product> tmp_list_product = new List<Product>();
+            string tmp_graph = "";
+            string tmp_mem = "";
+            string tmp_mother = "";
+            string tmp_disk = "";
+            string tmp_proc = "";
+            foreach (Product componant in list)
+            {
+                switch ((string)componant.Type)
+                {
+                    case ("Graphic_card"):
+                        tmp_graph = componant.Name;
+                        break;
+                    case ("memory"):
+                        tmp_mem = componant.Name;
+                        break;
+                    case ("Motherboard"):
+                        tmp_mother = componant.Name;
+                        break;
+                    case ("disk"):
+                        tmp_disk = componant.Name;
+                        break;
+                    case ("Processor"):
+                        tmp_proc = componant.Name;
+                        break;
+                }
+            }
+            tmp_list_product.Add(new Product()
+            {
+                Id = tmp_graph,
+                Name = tmp_mother,
+                Company = tmp_proc,
+                Type = tmp_disk,
+                Config = tmp_mem
+            });
+
+            return tmp_list_product;
         }
 
         private void text_settings_SelectionChanged(object sender, RoutedEventArgs e)
@@ -76,7 +119,7 @@ namespace NET_Framework
                 string id = xReader.ReadOuterXml(); // id
                 string id1 = id.Replace("<" + type + ">", "");
                 string id2 = id1.Replace("</" + type + ">", "");
-                this.product.Add(new Product()
+                this.ListProduct.Add(new Product()
                 {
                     Id = "",
                     Name = id2,
@@ -87,6 +130,8 @@ namespace NET_Framework
                     Config = ""
                 });
             }
+            List<Product> the_final_list = this.convertBigListProductToOneListProduct(this.ListProduct);
+            this.ViewModel.addInList(the_final_list);
         }
     }
 }
