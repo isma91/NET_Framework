@@ -83,9 +83,9 @@ namespace NET_Framework
         private async void Canvas_clicked(object sender, PointerRoutedEventArgs e)
         {
             Canvas canvas = (Canvas)sender;
-            string tag_canvas = (string)canvas.Tag;
-            int id = Int32.Parse(tag_canvas);
-            await this.product.save(id, componants.SelectedItem.ToString());
+            string name = (string)canvas.Tag;
+
+            await this.product.save(name, componants.SelectedItem.ToString());
         }
     }
 }
