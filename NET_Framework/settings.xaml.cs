@@ -61,5 +61,10 @@ namespace NET_Framework
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        private void text_settings_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
