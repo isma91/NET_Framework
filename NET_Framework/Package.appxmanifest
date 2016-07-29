@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="2b52a0b5-df7c-4e15-be3f-4d08288d8f37" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>NET_Framework</DisplayName>
-    <PublisherDisplayName>Isma</PublisherDisplayName>
+    <PublisherDisplayName>Isma; Raph ; Julie;</PublisherDisplayName>
     <Logo>Assets\param.png</Logo>
   </Properties>
   <Dependencies>
