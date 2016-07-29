@@ -34,6 +34,19 @@ namespace NET_Framework
             this.Memory = "Corsair";*/
         }
 
+        /*
+         * removeConfig private method
+         * 
+         * event on click on page
+         * 
+         * remove the config.xml in local app data
+         */
+        private void removeConfig(object sender, RoutedEventArgs e)
+        {
+            Product product = new Product();
+            product.removeFile();
+        }
+
         /// <summary>
         /// returnAtHome
         /// 
