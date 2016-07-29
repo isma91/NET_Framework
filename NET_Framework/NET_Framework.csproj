@@ -123,7 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\arrow2.png" />
-    <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\desktop.png" />
     <Content Include="Assets\Disk\samsung500-go.png" />
     <Content Include="Assets\Disk\seagate-logo.png" />
