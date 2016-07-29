@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Windows.UI.Popups;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Windows.Storage;
 using System.ComponentModel;
