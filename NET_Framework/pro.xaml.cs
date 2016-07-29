@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -82,7 +83,8 @@ namespace NET_Framework
         private async void Canvas_clicked(object sender, PointerRoutedEventArgs e)
         {
             Canvas canvas = (Canvas)sender;
-            int id = (int)canvas.Tag;
+            string tag_canvas = (string)canvas.Tag;
+            int id = Int32.Parse(tag_canvas);
             await this.product.save(id, componants.SelectedItem.ToString());
         }
     }
