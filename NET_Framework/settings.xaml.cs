@@ -22,14 +22,6 @@ namespace NET_Framework
     /// </summary>
     public sealed partial class settings : Page
     {
-
-        public string id { get; set; }
-        public string name { get; set; }
-        public string company { get; set; }
-        public string price { get; set; }
-        public string img { get; set; }
-        public string type { get; set; }
-        public string config { get; set; }
         
         public settings()
         {
@@ -40,12 +32,8 @@ namespace NET_Framework
         public async void stuffs()
         {
             Product stuffs = new Product();
-            await stuffs.save(1, "Graphic card");
-            await stuffs.save(2, "Processor");
-            await stuffs.save(3, "Motherboard");
-            await stuffs.save(4, "disk");
-            await stuffs.save(8, "memory");
             await stuffs.getMyStuffs();
+            //System.Diagnostics.Debug.Write(stuffs.MyStuff);
         }
 
         private void text_welcome_SelectionChanged(object sender, RoutedEventArgs e)
@@ -57,5 +45,6 @@ namespace NET_Framework
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
     }
 }
