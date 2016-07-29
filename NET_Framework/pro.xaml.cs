@@ -28,7 +28,7 @@ namespace NET_Framework
         public pro()
         {
             this.InitializeComponent();
-            var all_types = this.product.get_all_type();
+            string[] all_types = this.product.get_all_type();
             for (int i = 0; i <= (all_types.Length - 1); i++)
             {
                 componants.Items.Add(all_types[i]);

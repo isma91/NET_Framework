@@ -29,7 +29,7 @@ namespace NET_Framework
         public void addInList(List<Product> list)
         {
             this.productList.Clear();
-            foreach (var product in list)
+            foreach (Product product in list)
             {
                 this.productList.Add(product);
             }

@@ -145,7 +145,7 @@ namespace NET_Framework
             int length = this.json["products"].Count();
             string[] types = new string[length];
             int count = 0;
-            foreach (var product in this.json["products"])
+            foreach (JToken product in this.json["products"])
             {
                 types[count] = (string)product["type"];
                 count++;
@@ -167,7 +167,7 @@ namespace NET_Framework
 
             List<Product> product = new List<Product>();
 
-            foreach (var compo in this.json["products"])
+            foreach (JToken compo in this.json["products"])
             {
                 if (config == (string)compo["config"] && type == (string)compo["type"])
                 {
@@ -210,31 +210,31 @@ namespace NET_Framework
          */
         public async Task save (int id, string type)
         {
-            var nameF = ApplicationData.Current.LocalFolder;
-            var createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            var createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+            StorageFolder nameF = ApplicationData.Current.LocalFolder;
+            StorageFolder createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFile createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
 
             // create folder and open if exist
-            var getfolder = ApplicationData.Current.LocalFolder;
-            var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            var getfiles = await getnewFolder.GetFilesAsync();
+            StorageFolder getfolder = ApplicationData.Current.LocalFolder;
+            StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
 
             // get file config.xml
-            var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+            StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
 
             // read file
-            var textContent = await FileIO.ReadTextAsync(desiredFile);
+            string textContent = await FileIO.ReadTextAsync(desiredFile);
 
 
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            var folder = ApplicationData.Current.LocalFolder;
-            var newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFolder newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
 
             string occurence = "<" + type + ">";
 
             if (this.countOccurence(textContent, occurence) <= 0)
             {
-                var textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+                StorageFile textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
                 await FileIO.WriteTextAsync(textFile, textContent + "\n<" + type.Replace(" ", "_") + ">" + id.ToString() + "</" + type.Replace(" ", "_") + ">");
             }
 
@@ -250,11 +250,11 @@ namespace NET_Framework
          */
         public async Task getMyStuffs ()
         {
-            var getfolder = ApplicationData.Current.LocalFolder;
-            var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            var getfiles = await getnewFolder.GetFilesAsync();
+            StorageFolder getfolder = ApplicationData.Current.LocalFolder;
+            StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
 
-            var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+            StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
             string textContent = await FileIO.ReadTextAsync(desiredFile);
 
             List<settings> product = new List<settings>();
@@ -270,7 +270,7 @@ namespace NET_Framework
                 Debug.WriteLine(type2);
                 Debug.WriteLine(id2);
 
-                var stuff = getContentById(id);
+                List<Product> stuff = getContentById(id);
                 product.Add(new settings()
                     {
                         id = (string)stuff[0].id,
@@ -300,7 +300,7 @@ namespace NET_Framework
 
             List<Product> product = new List<Product>();
 
-            foreach (var compo in this.json["products"])
+            foreach (JToken compo in this.json["products"])
             {
                 if (id == (string)compo["id"])
                 {
