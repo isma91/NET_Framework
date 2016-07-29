@@ -24,14 +24,23 @@ namespace NET_Framework
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
     public sealed partial class settings : Page
-    {       
+    {   
         public List<Product> product = new List<Product>();
+        public string Graphic_card;
+        public string Motherboard;
+        public string Processor;
+        public string Disk;
+        public string Memory;
+
 
         public settings()
         {
             this.InitializeComponent();
-            
-
+            this.Graphic_card = "Nvidia";
+            this.Motherboard = "ATI";
+            this.Processor = "Intel";
+            this.Disk = "Kingstone";
+            this.Memory = "Corsair";
         }
 
         /// <summary>
