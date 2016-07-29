@@ -21,27 +21,21 @@ namespace NET_Framework
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
     public sealed partial class settings : Page
-    {       
-
-        public string id { get; set; }
-        public string name { get; set; }
-        public string company { get; set; }
-        public string price { get; set; }
-        public string img { get; set; }
-        public string type { get; set; }
-        public string config { get; set; }
+    {
+        public string Graphic_card;
+        public string Motherboard;
+        public string Processor;
+        public string Disk;
+        public string Memory;
 
         public settings()
         {
             this.InitializeComponent();
-            this.stuffs();
-        }
-
-        public async void stuffs()
-        {
-            Product stuffs = new Product();
-            await stuffs.getMyStuffs();
-            //System.Diagnostics.Debug.Write(stuffs.MyStuff);
+            this.Graphic_card = "Nvidia";
+            this.Motherboard = "ATI";
+            this.Processor = "Intel";
+            this.Disk = "Kingstone";
+            this.Memory = "Corsair";
         }
 
         /// <summary>
