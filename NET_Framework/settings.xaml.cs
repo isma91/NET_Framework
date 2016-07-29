@@ -2,17 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using System.Diagnostics;
 using Windows.Storage;
 using System.Xml;
 
@@ -32,15 +23,15 @@ namespace NET_Framework
         public string Disk;
         public string Memory;
 
-
         public settings()
         {
             this.InitializeComponent();
-            this.Graphic_card = "Nvidia";
+            this.getMyStuffs();
+            /*this.Graphic_card = "Nvidia";
             this.Motherboard = "ATI";
             this.Processor = "Intel";
             this.Disk = "Kingstone";
-            this.Memory = "Corsair";
+            this.Memory = "Corsair";*/
         }
 
         /// <summary>
@@ -60,38 +51,30 @@ namespace NET_Framework
 
         private void text_settings_SelectionChanged(object sender, RoutedEventArgs e)
         {
-
         }
 
-        /*
-         * getMyStuffs method
-         * 
-         * get saving stuffs file if exists
-         * and return all id in json
-         * 
-         * @return json
-         */
+        /// <summary>
+        /// getMyStuffs
+        /// 
+        /// Get saving stuff if the file exist
+        /// 
+        /// @return void;
+        /// </summary>
         public async void getMyStuffs()
         {
-
             StorageFolder getfolder = ApplicationData.Current.LocalFolder;
             StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
             IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
-
             StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
             string textContent = await FileIO.ReadTextAsync(desiredFile);
-
             XmlReader xReader = XmlReader.Create(new StringReader(textContent));
             while (xReader.Read())
             {
-
                 string type = xReader.Name; // graphic card
                 string type2 = type.Replace("_", " ");
-
                 string id = xReader.ReadOuterXml(); // id
                 string id1 = id.Replace("<" + type + ">", "");
                 string id2 = id1.Replace("</" + type + ">", "");
-
                 this.product.Add(new Product()
                 {
                     Id = "",
@@ -103,8 +86,6 @@ namespace NET_Framework
                     Config = ""
                 });
             }
-
         }
-
     }
 }

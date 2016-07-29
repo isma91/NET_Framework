@@ -8,7 +8,6 @@ using Windows.UI.Popups;
 using System.Diagnostics;
 using Windows.Storage;
 using System.ComponentModel;
-using System.Xml;
 
 namespace NET_Framework
 {
@@ -258,8 +257,6 @@ namespace NET_Framework
             }
 
         }
-
-
 
         /// <summary>
         /// getContentById
