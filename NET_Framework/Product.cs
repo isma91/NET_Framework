@@ -227,7 +227,7 @@ namespace NET_Framework
          * @param int id
          * @return Task
          */
-        public async Task save (int id, string type)
+        public async Task save (string id, string type)
         {
             StorageFolder nameF = ApplicationData.Current.LocalFolder;
             StorageFolder createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
@@ -259,51 +259,7 @@ namespace NET_Framework
 
         }
 
-        /*
-         * getMyStuffs method
-         * 
-         * get saving stuffs file if exists
-         * and return all id in json
-         * 
-         * @return json
-         */
-        public async Task getMyStuffs ()
-        {
-            StorageFolder getfolder = ApplicationData.Current.LocalFolder;
-            StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
 
-            StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
-            string textContent = await FileIO.ReadTextAsync(desiredFile);
-
-            List<settings> product = new List<settings>();
-
-            XmlReader xReader = XmlReader.Create(new StringReader(textContent));
-            while (xReader.Read())
-            {
-                string type = xReader.Name; // graphic card
-                string type2 = type.Replace("_", " ");
-
-                string id = xReader.ReadOuterXml(); // id
-                string id1 = id.Replace("<" + type + ">", "");
-                string id2 = id1.Replace("</" + type + ">", "");
-
-                Debug.WriteLine(type2);
-                Debug.WriteLine(id2);
-
-                List<Product> stuff = getContentById(id);
-                product.Add(new settings()
-                    {
-                        id = (string)stuff[0].id,
-                        name = (string)stuff[0].name,
-                        company = (string)stuff[0].company,
-                        price = (string)stuff[0].price,
-                        img = "Assets/" + (string)stuff[0].img,
-                        type = (string)stuff[0].type,
-                        config = (string)stuff[0].config
-                    });
-            }
-        }
 
         /// <summary>
         /// getContentById
