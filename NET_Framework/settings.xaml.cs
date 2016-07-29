@@ -21,8 +21,7 @@ namespace NET_Framework
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
     public sealed partial class settings : Page
-    {
-        
+    {       
         public settings()
         {
             this.InitializeComponent();
@@ -36,14 +35,24 @@ namespace NET_Framework
             //System.Diagnostics.Debug.Write(stuffs.MyStuff);
         }
 
-        private void text_welcome_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// returnAtHome
+        /// 
+        /// Triggered when we click in the button, redirect in the home page
+        /// 
+        /// @param object; sender  the button
+        /// @param PointerRoutedEventArgs e  the event that we don't use
+        /// 
+        /// @return void;
+        /// </summary>
         private void returnAtHome(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void text_settings_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }

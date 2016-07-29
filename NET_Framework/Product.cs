@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Windows.UI.Popups;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Windows.Storage;
 using System.ComponentModel;
@@ -112,6 +110,16 @@ namespace NET_Framework
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
+        /// <summary>
+        /// NotifyPropertyChanged
+        /// 
+        /// Notify the client (xaml) that a property in the Product class change
+        /// It's to get dinamycly the content of a specific type of Product without refresh the page
+        /// 
+        /// @param string; propertyName  the name of the property of the class Product
+        /// 
+        /// @return void;
+        /// </summary>
         public void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -120,6 +128,13 @@ namespace NET_Framework
             }
         }
 
+        /// <summary>
+        /// Product
+        /// 
+        /// The contructor of the class get the JSON file and parse him to get a full list of Product
+        /// 
+        /// @return void;
+        /// </summary>
         public Product()
         {
             try
@@ -132,20 +147,20 @@ namespace NET_Framework
                 Debug.WriteLine("The file " + this.file_name + " was not found !!");
             }
         }
-
-        /*
-         * get_all_type 
-         * 
-         * check in the json file all differents type of componants
-         * 
-         * return array of string
-         */
+        
+        /// <summary>
+        /// get_all_type
+        /// 
+        /// Get all differents type of componants of the JSON
+        /// 
+        /// @return string[]; an array of all type of Product
+        /// </summary>
         public string[] get_all_type()
         {
             int length = this.json["products"].Count();
             string[] types = new string[length];
             int count = 0;
-            foreach (var product in this.json["products"])
+            foreach (JToken product in this.json["products"])
             {
                 types[count] = (string)product["type"];
                 count++;
@@ -154,12 +169,16 @@ namespace NET_Framework
             return all_types;
         }
 
-        /*
-         * getContent
-         * 
-         * @param string config, string type
-         * @return List<Product>
-         */
+        /// <summary>
+        /// getContent
+        /// 
+        /// Get the content of specific Product compared to what we want
+        /// 
+        /// @param string; config the config of the componant
+        /// @param string; type the type of the componant
+        /// 
+        /// @return List<Product>; A list of Product who are in the type and config as asked
+        /// </summary>
         public List<Product> getContent (string config, string type)
         {
             int length = this.json["products"].Count();
@@ -167,7 +186,7 @@ namespace NET_Framework
 
             List<Product> product = new List<Product>();
 
-            foreach (var compo in this.json["products"])
+            foreach (JToken compo in this.json["products"])
             {
                 if (config == (string)compo["config"] && type == (string)compo["type"])
                 {
@@ -210,31 +229,31 @@ namespace NET_Framework
          */
         public async Task save (int id, string type)
         {
-            var nameF = ApplicationData.Current.LocalFolder;
-            var createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            var createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+            StorageFolder nameF = ApplicationData.Current.LocalFolder;
+            StorageFolder createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFile createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
 
             // create folder and open if exist
-            var getfolder = ApplicationData.Current.LocalFolder;
-            var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            var getfiles = await getnewFolder.GetFilesAsync();
+            StorageFolder getfolder = ApplicationData.Current.LocalFolder;
+            StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
 
             // get file config.xml
-            var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+            StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
 
             // read file
-            var textContent = await FileIO.ReadTextAsync(desiredFile);
+            string textContent = await FileIO.ReadTextAsync(desiredFile);
 
 
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            var folder = ApplicationData.Current.LocalFolder;
-            var newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFolder newFolder = await folder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
 
             string occurence = "<" + type + ">";
 
             if (this.countOccurence(textContent, occurence) <= 0)
             {
-                var textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+                StorageFile textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
                 await FileIO.WriteTextAsync(textFile, textContent + "\n<" + type.Replace(" ", "_") + ">" + id.ToString() + "</" + type.Replace(" ", "_") + ">");
             }
 
@@ -250,11 +269,11 @@ namespace NET_Framework
          */
         public async Task getMyStuffs ()
         {
-            var getfolder = ApplicationData.Current.LocalFolder;
-            var getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
-            var getfiles = await getnewFolder.GetFilesAsync();
+            StorageFolder getfolder = ApplicationData.Current.LocalFolder;
+            StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
 
-            var desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+            StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
             string textContent = await FileIO.ReadTextAsync(desiredFile);
 
             List<MyStuff> product = new List<MyStuff>();
@@ -272,8 +291,8 @@ namespace NET_Framework
                 Debug.WriteLine(type2);
                 Debug.WriteLine(id2);
 
-                var stuff = getContentById(id2);
-                product.Add(new MyStuff()
+                List<Product> stuff = getContentById(id);
+                product.Add(new settings()
                     {
                         id = (string)stuff[0].id,
                         name = (string)stuff[0].name,
@@ -286,22 +305,25 @@ namespace NET_Framework
             }
         }
 
-        /*
-         * getContentById method
-         * 
-         * @param int id
-         * @return List<Product>
-         */
+        /// <summary>
+        /// getContentById
+        /// 
+        /// Get the content of a Product by his own id
+        /// 
+        /// @param string; id the id of the componant
+        /// 
+        /// @return List<Product>; the Product
+        /// </summary>
         public List<Product> getContentById (string id)
         {
             int length = this.json["products"].Count();
             string[] types = new string[length];
 
             List<Product> product = new List<Product>();
-            bool enter = false;
-            foreach (var compo in this.json["products"])
+
+            foreach (JToken compo in this.json["products"])
             {
-                if (id == (string)compo["id"] && enter == false)
+                if (id == (string)compo["id"])
                 {
                     product.Add(new Product()
                     {

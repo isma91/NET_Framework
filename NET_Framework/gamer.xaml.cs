@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,10 +15,19 @@ namespace NET_Framework
     {
         public ProductViewModel ViewModel { get; set; }
         public Product product = new Product();
+
+        /// <summary>
+        /// gamer
+        /// 
+        /// Fullied the combobox with all type of Product to let the user
+        /// choose the type he want
+        /// 
+        /// @return void;
+        /// </summary>
         public gamer()
         {
             this.InitializeComponent();
-            var all_types = this.product.get_all_type();
+            string[] all_types = this.product.get_all_type();
             for (int i = 0; i <= (all_types.Length - 1); i++)
             {
                 componants.Items.Add(all_types[i]);
@@ -36,11 +35,32 @@ namespace NET_Framework
             this.ViewModel = new ProductViewModel();
         }
 
+        /// <summary>
+        /// returnAtHome
+        /// 
+        /// Triggered when we click in the button, redirect in the home page
+        /// 
+        /// @param object; sender  the button
+        /// @param PointerRoutedEventArgs e  the event that we don't use
+        /// 
+        /// @return void;
+        /// </summary>
         private void returnAtHome(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
 
+        /// <summary>
+        /// componant_change
+        /// 
+        /// Triggered when we select something in the combobox, get the selected item who's the type of a Product
+        /// and ask to get all componant of this type of Product
+        /// 
+        /// @param object; sender  the combobox
+        /// @param PointerRoutedEventArgs e  the event that we don't use
+        /// 
+        /// @return void;
+        /// </summary>
         private void componant_change(object sender, SelectionChangedEventArgs e)
         {
             string selected_item = componants.SelectedItem.ToString();
@@ -49,10 +69,22 @@ namespace NET_Framework
             this.ViewModel.addInList(all_products);
         }
 
+        /// <summary>
+        /// Canvas_clicked
+        /// 
+        /// Triggered when we click in a canvas, get the tag of the canvas who's the id of the Product
+        /// and save it in a specific file
+        /// 
+        /// @param object; sender  the canvas
+        /// @param PointerRoutedEventArgs e  the event that we don't use
+        /// 
+        /// @return void;
+        /// </summary>
         private async void Canvas_clicked(object sender, PointerRoutedEventArgs e)
         {
             Canvas canvas = (Canvas)sender;
-            int id = (int)canvas.Tag;
+            string tag_canvas = (string)canvas.Tag;
+            int id = Int32.Parse(tag_canvas);
             await this.product.save(id, componants.SelectedItem.ToString());
         }
     }

@@ -13,7 +13,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="text_settings" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="68" FontFamily="Calibri" FontSize="48" Foreground="White" Text="My Settings" TextAlignment="Center" Grid.ColumnSpan="2" Margin="0,10,0,0" SelectionChanged="text_welcome_SelectionChanged"/>
+        <TextBlock x:Name="text_settings" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="68" FontFamily="Calibri" FontSize="48" Foreground="White" Text="My Settings" TextAlignment="Center" Grid.ColumnSpan="2" Margin="0,10,0,0" SelectionChanged="text_settings_SelectionChanged"/>
         <Button x:Name="button" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="19,74,290,0" Width="46" Background="{x:Null}" Foreground="White" Height="36" Click="returnAtHome" RenderTransformOrigin="1.076,-1.736">
             <Button.Content>
                 <Image Source="Assets/arrow2.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
