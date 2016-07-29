@@ -243,6 +243,8 @@ namespace NET_Framework
             // read file
             string textContent = await FileIO.ReadTextAsync(desiredFile);
 
+            string remove1 = textContent.Replace("</Product>", "");
+            string reformat = remove1.Replace("<Product>", "");
 
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             StorageFolder folder = ApplicationData.Current.LocalFolder;
@@ -250,12 +252,27 @@ namespace NET_Framework
 
             string occurence = "<" + type + ">";
 
-            if (this.countOccurence(textContent, occurence) <= 0)
+            if (this.countOccurence(reformat, occurence) <= 0)
             {
                 StorageFile textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
-                await FileIO.WriteTextAsync(textFile, "<" + type.Replace(" ", "_") + ">" + id.ToString() + "</" + type.Replace(" ", "_") + ">\n" + textContent);
+                await FileIO.WriteTextAsync(textFile, "<Product>\n<" + type.Replace(" ", "_") + ">" + id.ToString() + "</" + type.Replace(" ", "_") + ">\n" + reformat + "\n</Product>");
             }
 
+        }
+
+        /*
+         * removeFile method
+         * 
+         * remove config.xml in local data
+         * 
+         * @return void
+         */
+        public async void removeFile ()
+        {
+            StorageFolder nameF = ApplicationData.Current.LocalFolder;
+            StorageFolder createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFile createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+            await createFile.DeleteAsync(StorageDeleteOption.Default);
         }
 
         /// <summary>
