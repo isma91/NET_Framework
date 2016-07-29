@@ -27,7 +27,6 @@ namespace NET_Framework
         public desktop()
         {
             this.InitializeComponent();
-            Product product = new Product();
             string[] all_types = this.product.get_all_type();
             for (int i = 0; i <= (all_types.Length -1); i++)
             {

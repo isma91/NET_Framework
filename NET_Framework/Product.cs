@@ -306,12 +306,15 @@ namespace NET_Framework
             Debug.WriteLine(product);
         }
 
-        /*
-         * getContentById method
-         * 
-         * @param int id
-         * @return List<Product>
-         */
+        /// <summary>
+        /// getContentById
+        /// 
+        /// Get the content of a Product by his own id
+        /// 
+        /// @param string; id the id of the componant
+        /// 
+        /// @return List<Product>; the Product
+        /// </summary>
         public List<Product> getContentById (string id)
         {
             int length = this.json["products"].Count();
