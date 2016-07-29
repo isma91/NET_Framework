@@ -22,7 +22,6 @@ namespace NET_Framework
     /// </summary>
     public sealed partial class settings : Page
     {
-
         public string id { get; set; }
         public string name { get; set; }
         public string company { get; set; }
@@ -48,11 +47,16 @@ namespace NET_Framework
             await stuffs.getMyStuffs();
         }
 
-        private void text_welcome_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// returnAtHome
+        /// 
+        /// Triggered when we click in the button, redirect in the home page
+        /// 
+        /// @param object; sender  the button
+        /// @param PointerRoutedEventArgs e  the event that we don't use
+        /// 
+        /// @return void;
+        /// </summary>
         private void returnAtHome(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));

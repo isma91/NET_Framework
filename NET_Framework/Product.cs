@@ -110,6 +110,16 @@ namespace NET_Framework
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
+        /// <summary>
+        /// NotifyPropertyChanged
+        /// 
+        /// Notify the client (xaml) that a property in the Product class change
+        /// It's to get dinamycly the content of a specific type of Product without refresh the page
+        /// 
+        /// @param string; propertyName  the name of the property of the class Product
+        /// 
+        /// @return void;
+        /// </summary>
         public void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -118,6 +128,13 @@ namespace NET_Framework
             }
         }
 
+        /// <summary>
+        /// Product
+        /// 
+        /// The contructor of the class get the JSON file and parse him to get a full list of Product
+        /// 
+        /// @return void;
+        /// </summary>
         public Product()
         {
             try
@@ -130,14 +147,14 @@ namespace NET_Framework
                 Debug.WriteLine("The file " + this.file_name + " was not found !!");
             }
         }
-
-        /*
-         * get_all_type 
-         * 
-         * check in the json file all differents type of componants
-         * 
-         * return array of string
-         */
+        
+        /// <summary>
+        /// get_all_type
+        /// 
+        /// Get all differents type of componants of the JSON
+        /// 
+        /// @return string[]; an array of all type of Product
+        /// </summary>
         public string[] get_all_type()
         {
             int length = this.json["products"].Count();
@@ -152,12 +169,16 @@ namespace NET_Framework
             return all_types;
         }
 
-        /*
-         * getContent
-         * 
-         * @param string config, string type
-         * @return List<Product>
-         */
+        /// <summary>
+        /// getContent
+        /// 
+        /// Get the content of specific Product compared to what we want
+        /// 
+        /// @param string; config the config of the componant
+        /// @param string; type the type of the componant
+        /// 
+        /// @return List<Product>; A list of Product who are in the type and config as asked
+        /// </summary>
         public List<Product> getContent (string config, string type)
         {
             int length = this.json["products"].Count();

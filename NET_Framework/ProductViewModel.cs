@@ -14,6 +14,15 @@ namespace NET_Framework
             }
         }
 
+        /// <summary>
+        /// addInList
+        /// 
+        /// Get a List<Product> to add every Product class in the ObservableCollection<Product>
+        /// 
+        /// @param List<Product>; list  the list of Product
+        /// 
+        /// @return void;
+        /// </summary>
         public void addInList(List<Product> list)
         {
             this.productList.Clear();
