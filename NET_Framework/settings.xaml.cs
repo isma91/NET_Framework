@@ -68,6 +68,7 @@ namespace NET_Framework
             StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
             string textContent = await FileIO.ReadTextAsync(desiredFile);
             XmlReader xReader = XmlReader.Create(new StringReader(textContent));
+            xReader.ReadStartElement("Product");
             while (xReader.Read())
             {
                 string type = xReader.Name; // graphic card
