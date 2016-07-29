@@ -269,10 +269,19 @@ namespace NET_Framework
          */
         public async void removeFile ()
         {
+            // remove file
             StorageFolder nameF = ApplicationData.Current.LocalFolder;
             StorageFolder createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
             StorageFile createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
             await createFile.DeleteAsync(StorageDeleteOption.Default);
+
+            // create file
+            StorageFolder getLocal = ApplicationData.Current.LocalFolder;
+            StorageFolder getOrCreateFolder = await getLocal.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFile getOrCreateFile = await getOrCreateFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+            await FileIO.WriteTextAsync(getOrCreateFile, "<Product></Product>");
+
+
         }
 
         /// <summary>

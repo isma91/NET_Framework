@@ -108,7 +108,17 @@ namespace NET_Framework
         private void text_settings_SelectionChanged(object sender, RoutedEventArgs e)
         {
         }
-
+        public int countOccurence(string source, string test)
+        {
+            int nb = 0;
+            int i = 0;
+            while ((i = source.IndexOf(test, i)) != -1)
+            {
+                i += test.Length;
+                nb++;
+            }
+            return nb;
+        }
         /// <summary>
         /// getMyStuffs
         /// 
@@ -121,7 +131,6 @@ namespace NET_Framework
             StorageFolder getfolder = ApplicationData.Current.LocalFolder;
             StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
             StorageFile createFile = await getnewFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
-            await FileIO.WriteTextAsync(createFile, "<Product></Product>");
 
             IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
             StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
