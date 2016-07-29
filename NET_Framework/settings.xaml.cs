@@ -138,28 +138,31 @@ namespace NET_Framework
             string textContent = await FileIO.ReadTextAsync(desiredFile);
 
             XmlReader xReader = XmlReader.Create(new StringReader(textContent));
-            xReader.ReadStartElement("Product");
-
-            while (xReader.Read())
+            if (textContent != "")
             {
-                string type = xReader.Name; // graphic card
-                string type2 = type.Replace("_", " ");
-                string id = xReader.ReadOuterXml(); // id
-                string id1 = id.Replace("<" + type + ">", "");
-                string id2 = id1.Replace("</" + type + ">", "");
-                this.ListProduct.Add(new Product()
+                xReader.ReadStartElement("Product");
+
+                while (xReader.Read())
                 {
-                    Id = "",
-                    Name = id2,
-                    Company = "",
-                    Price = "",
-                    Img = "",
-                    Type = type,
-                    Config = ""
-                });
+                    string type = xReader.Name; // graphic card
+                    string type2 = type.Replace("_", " ");
+                    string id = xReader.ReadOuterXml(); // id
+                    string id1 = id.Replace("<" + type + ">", "");
+                    string id2 = id1.Replace("</" + type + ">", "");
+                    this.ListProduct.Add(new Product()
+                    {
+                        Id = "",
+                        Name = id2,
+                        Company = "",
+                        Price = "",
+                        Img = "",
+                        Type = type,
+                        Config = ""
+                    });
+                }
+                List<Product> the_final_list = this.convertBigListProductToOneListProduct(this.ListProduct);
+                this.ViewModel.addInList(the_final_list);
             }
-            List<Product> the_final_list = this.convertBigListProductToOneListProduct(this.ListProduct);
-            this.ViewModel.addInList(the_final_list);
         }
     }
 }
