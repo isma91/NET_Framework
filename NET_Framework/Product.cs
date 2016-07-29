@@ -253,7 +253,7 @@ namespace NET_Framework
             if (this.countOccurence(textContent, occurence) <= 0)
             {
                 StorageFile textFile = await newFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
-                await FileIO.WriteTextAsync(textFile, "<" + type.Replace(" ", "_") + ">" + id.ToString() + "</" + type.Replace(" ", "_") + ">" + textContent);
+                await FileIO.WriteTextAsync(textFile, "<" + type.Replace(" ", "_") + ">" + id.ToString() + "</" + type.Replace(" ", "_") + ">\n" + textContent);
             }
 
         }
