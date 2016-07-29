@@ -8,11 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="#FF5D5D5D">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
         <TextBlock x:Name="text_settings" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Height="68" FontFamily="Calibri" FontSize="48" Foreground="White" Text="My Settings" TextAlignment="Center" Grid.ColumnSpan="2" Margin="0,10,0,0" SelectionChanged="text_settings_SelectionChanged"/>
         <Button x:Name="button" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="19,74,290,0" Width="46" Background="{x:Null}" Foreground="White" Height="36" Click="returnAtHome" RenderTransformOrigin="1.076,-1.736">
             <Button.Content>
@@ -20,9 +15,32 @@
             </Button.Content>
         </Button>
         <TextBlock x:Name="textBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="List of saved configurations :" VerticalAlignment="Top" Margin="18,132,65,0" FontSize="22" Foreground="#FF0E0808"/>
-        <Canvas Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="272" VerticalAlignment="Top" Width="337" Margin="12,174,11,0" Background="#FF16769A">
+        <ListView ItemsSource="{x:Bind ViewModel.ProductList}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,166,0,0" Height="474">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Product">
+                    <StackPanel Orientation="Horizontal" Margin="6">
+                        <StackPanel>
+                            <Canvas Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="272" VerticalAlignment="Top" Width="337" Margin="0" Background="#FF16769A">
+                                <TextBlock x:Name="NameBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name Setting" VerticalAlignment="Top" Height="39" Width="334" TextAlignment="Center" FontSize="24" Foreground="#FF001B22" Canvas.Left="1" Canvas.Top="1" SelectionHighlightColor="White"/>
+                                <TextBlock x:Name="GraphicCardBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphic Card" VerticalAlignment="Top" Height="28" Width="108" TextAlignment="Center" FontSize="18" Foreground="#FF220000" Canvas.Left="1" Canvas.Top="54"/>
+                                <TextBlock x:Name="HddBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HDD" VerticalAlignment="Top" Height="28" Width="108" TextAlignment="Center" FontSize="18" Foreground="#FF220000" Canvas.Left="2" Canvas.Top="94"/>
+                                <TextBlock x:Name="ProcessorBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Processor" VerticalAlignment="Top" Height="28" Width="108" TextAlignment="Center" FontSize="18" Foreground="#FF220000" Canvas.Left="2" Canvas.Top="131"/>
+                                <TextBlock x:Name="MotherboardsBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Motherboard" VerticalAlignment="Top" Height="28" Width="108" TextAlignment="Center" FontSize="18" Foreground="#FF220000" Canvas.Top="172" Canvas.Left="1"/>
+                                <TextBlock x:Name="RamBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="RAM" VerticalAlignment="Top" Height="28" Width="108" FontSize="18" Foreground="#FF220000" Canvas.Left="3" Canvas.Top="211" RenderTransformOrigin="0.443,2.17" TextAlignment="Center"/>
+
+                                <TextBlock x:Name="ItemGraphicCardBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Id, Mode=OneWay}"  VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="54"/>
+                                <TextBlock x:Name="ItemHddBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Type, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="94"/>
+                                <TextBlock x:Name="ItemProcessorBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Company, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="131"/>
+                                <TextBlock x:Name="ItemMotherboardsBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Name, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Top="172" Canvas.Left="118"/>
+                                <TextBlock x:Name="ItemRamBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Config, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="211" RenderTransformOrigin="0.443,2.17" TextAlignment="Center"/>
+                            </Canvas>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--<Canvas Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="272" VerticalAlignment="Top" Width="337" Margin="12,174,11,0" Background="#FF16769A">
             
-            <!--Labels for configuration list-->
             <TextBlock x:Name="NameBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Name Setting" VerticalAlignment="Top" Height="39" Width="334" TextAlignment="Center" FontSize="24" Foreground="#FF001B22" Canvas.Left="1" Canvas.Top="1" SelectionHighlightColor="White"/>
             <TextBlock x:Name="GraphicCardBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Graphic Card" VerticalAlignment="Top" Height="28" Width="108" TextAlignment="Center" FontSize="18" Foreground="#FF220000" Canvas.Left="1" Canvas.Top="54"/>
             <TextBlock x:Name="HddBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="HDD" VerticalAlignment="Top" Height="28" Width="108" TextAlignment="Center" FontSize="18" Foreground="#FF220000" Canvas.Left="2" Canvas.Top="94"/>
@@ -31,13 +49,12 @@
             <TextBlock x:Name="RamBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="RAM" VerticalAlignment="Top" Height="28" Width="108" FontSize="18" Foreground="#FF220000" Canvas.Left="3" Canvas.Top="211" RenderTransformOrigin="0.443,2.17" TextAlignment="Center"/>
 
 
-            <!--List of saved configuration-->
-            <TextBlock x:Name="ItemGraphicCardBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Graphic_card}"  VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="54"/>
-            <TextBlock x:Name="ItemHddBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Motherboard}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="94"/>
-            <TextBlock x:Name="ItemProcessorBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Processor}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="131"/>
-            <TextBlock x:Name="ItemMotherboardsBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Disk}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Top="172" Canvas.Left="118"/>
-            <TextBlock x:Name="ItemRamBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Memory}" VerticalAlignment="Top" Height="28" Width="217" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="211" RenderTransformOrigin="0.443,2.17" TextAlignment="Center"/>
-        </Canvas>
+            <TextBlock x:Name="ItemGraphicCardBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Graphic_card, Mode=OneWay}"  VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="54"/>
+            <TextBlock x:Name="ItemHddBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Motherboard, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="94"/>
+            <TextBlock x:Name="ItemProcessorBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Processor, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="131"/>
+            <TextBlock x:Name="ItemMotherboardsBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Disk, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" TextAlignment="Center" FontSize="18" Foreground="#FF999898" Canvas.Top="172" Canvas.Left="118"/>
+            <TextBlock x:Name="ItemRamBlock" Grid.ColumnSpan="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Bind Memory, Mode=OneWay}" VerticalAlignment="Top" Height="28" Width="217" FontSize="18" Foreground="#FF999898" Canvas.Left="118" Canvas.Top="211" RenderTransformOrigin="0.443,2.17" TextAlignment="Center"/>
+        </Canvas>-->
 
     </Grid>
 </Page>
