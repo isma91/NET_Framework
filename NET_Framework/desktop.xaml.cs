@@ -84,7 +84,6 @@ namespace NET_Framework
         {
             Canvas canvas = (Canvas)sender;
             string name = (string)canvas.Tag;
-
             await this.product.save(name, componants.SelectedItem.ToString());
         }
     }
