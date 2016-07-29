@@ -265,6 +265,21 @@ namespace NET_Framework
 
         }
 
+        /*
+         * removeFile method
+         * 
+         * remove config.xml in local data
+         * 
+         * @return void
+         */
+        public async void removeFile ()
+        {
+            StorageFolder nameF = ApplicationData.Current.LocalFolder;
+            StorageFolder createFolder = await nameF.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFile createFile = await createFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+            await createFile.DeleteAsync(StorageDeleteOption.Default);
+        }
+
         /// <summary>
         /// getContentById
         /// 
