@@ -312,17 +312,6 @@ namespace NET_Framework
             return product;
         }
 
-        public class MyStuff
-        {
-            public string id { get; set; }
-            public string name { get; set; }
-            public string company { get; set; }
-            public string price { get; set; }
-            public string img { get; set; }
-            public string type { get; set; }
-            public string config { get; set; }
-        }
-
         private void Quit(IUICommand command)
         {
             Windows.ApplicationModel.Core.CoreApplication.Exit();
