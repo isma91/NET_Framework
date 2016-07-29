@@ -120,11 +120,17 @@ namespace NET_Framework
         {
             StorageFolder getfolder = ApplicationData.Current.LocalFolder;
             StorageFolder getnewFolder = await getfolder.CreateFolderAsync("config", CreationCollisionOption.OpenIfExists);
+            StorageFile createFile = await getnewFolder.CreateFileAsync("config.xml", CreationCollisionOption.OpenIfExists);
+            await FileIO.WriteTextAsync(createFile, "<Product></Product>");
+
             IReadOnlyList<StorageFile> getfiles = await getnewFolder.GetFilesAsync();
             StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
+
             string textContent = await FileIO.ReadTextAsync(desiredFile);
+
             XmlReader xReader = XmlReader.Create(new StringReader(textContent));
             xReader.ReadStartElement("Product");
+
             while (xReader.Read())
             {
                 string type = xReader.Name; // graphic card
