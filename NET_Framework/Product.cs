@@ -276,7 +276,7 @@ namespace NET_Framework
             StorageFile desiredFile = getfiles.FirstOrDefault(x => x.Name == "config.xml");
             string textContent = await FileIO.ReadTextAsync(desiredFile);
 
-            List<MyStuff> product = new List<MyStuff>();
+            List<settings> product = new List<settings>();
 
             XmlReader xReader = XmlReader.Create(new StringReader(textContent));
             while (xReader.Read())

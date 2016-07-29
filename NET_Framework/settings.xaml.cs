@@ -22,6 +22,15 @@ namespace NET_Framework
     /// </summary>
     public sealed partial class settings : Page
     {       
+
+        public string id { get; set; }
+        public string name { get; set; }
+        public string company { get; set; }
+        public string price { get; set; }
+        public string img { get; set; }
+        public string type { get; set; }
+        public string config { get; set; }
+
         public settings()
         {
             this.InitializeComponent();
